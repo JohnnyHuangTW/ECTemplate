@@ -1,12 +1,11 @@
 <div id="carousel-id" class="carousel slide" data-ride="carousel">
-  <!-- 幻燈片小圓點區 -->
-  <ol class="carousel-indicators">
-    <li *ngFor="let item of data; let i = index" data-target="#carousel-id" [attr.data-slide-to]="i" [className]="i === 0 ? 'active': ''"></li>
-
-  </ol>
-  <!-- 幻燈片主圖區 -->
-  <div class="carousel-inner">
-        <div *ngFor="let item of data" class="item">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li *ngFor="let item of data; let i = index" data-target="#carousel-id" [attr.data-slide-to]="i" [className]="i === 0 ? 'active': ''"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div *ngFor="let item of data; let i = index" [ngClass]="i == 0 ? 'item active' : 'item' ">
             <img [src]="item.img" alt="">
             <div class="container">
                 <div class="carousel-caption">
@@ -16,8 +15,8 @@
                 </div>
             </div>
         </div>
-  </div>
-  <!-- 上下頁控制區 -->
-  <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>

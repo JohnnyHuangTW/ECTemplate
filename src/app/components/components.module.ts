@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { FakeImageComponent } from './fake-image/fake-image.component';
 
 @NgModule({
