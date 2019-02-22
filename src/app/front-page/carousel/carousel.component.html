@@ -1,0 +1,23 @@
+<div id="carousel-id" class="carousel slide" data-ride="carousel">
+  <!-- 幻燈片小圓點區 -->
+  <ol class="carousel-indicators">
+    <li *ngFor="let item of data; let i = index" data-target="#carousel-id" [attr.data-slide-to]="i" [className]="i === 0 ? 'active': ''"></li>
+
+  </ol>
+  <!-- 幻燈片主圖區 -->
+  <div class="carousel-inner">
+        <div *ngFor="let item of data" class="item">
+            <img [src]="item.img" alt="">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>{{item.title}}</h1>
+                    <p>{{item.description}}</p>
+                    <p><a class="btn btn-lg btn-primary" [href]="item.button.href" role="button">{{item.button.content}}</a></p>
+                </div>
+            </div>
+        </div>
+  </div>
+  <!-- 上下頁控制區 -->
+  <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
