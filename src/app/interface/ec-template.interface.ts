@@ -7,3 +7,13 @@ export interface CarouselInfo {
     href: string;
   };
 }
+
+export interface ProductInfo {
+  id: number;
+  name: string;
+  description: string;
+  img: string;
+  onSale: boolean;
+  costPrice: string;
+  salePrice: string;
+}

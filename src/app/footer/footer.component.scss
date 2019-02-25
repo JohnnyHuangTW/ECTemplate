@@ -13,6 +13,10 @@
   padding-bottom: 50px;
 }
 
+.footer .footer-data2 a {
+  margin-right: 5px;
+}
+
 .footer .footer-data1 a {
   color: #333;
   text-decoration: none;
@@ -20,4 +24,10 @@
 
 .footer .footer-data1 a:hover {
   color: #f00;
+}
+
+@media screen and (min-width:768px) {
+  .footer-menu2 {
+    text-align: right;
+  }
 }

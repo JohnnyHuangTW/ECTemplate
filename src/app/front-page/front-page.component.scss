@@ -3,47 +3,9 @@
   width: 100%;
 }
 
-
-@media screen and (min-width:768px) {
-  .footer-menu2 {
-    text-align: right;
-  }
-}
-
 .main-title .h2 {
   font-size: 16px;
   color: #333;
-}
-
-.products .thumbnail {
-  text-decoration: none;
-  border: none;
-  padding: 0;
-}
-
-.products .thumbnail .caption {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.products .thumbnail h2 {
-  font-size: 15px;
-  margin-top: 0;
-}
-
-.products .thumbnail del {
-  font-size: 15px;
-  color: #999;
-}
-
-.products .thumbnail .price {
-  display: block;
-  font-size: 15px;
-  color: #666;
-}
-
-.products .thumbnail .price.sale {
-  color: #f00;
 }
 
 .mb-40 {

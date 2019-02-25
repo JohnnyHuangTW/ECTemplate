@@ -1,0 +1,13 @@
+<a href="#" class="thumbnail">
+    <img [src]="data.img">
+    <div class="caption">
+        <h2>{{data.name}}</h2>
+        <p *ngIf="data.onSale" class="price">
+            <del>${{data.costPrice}}</del>
+            <span class="sale">${{data.salePrice}}</span>
+        </p>
+        <p *ngIf="!data.onSale" class="price">
+            <span>${{data.costPrice}}</span>
+        </p>
+    </div>
+</a>
