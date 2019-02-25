@@ -12,8 +12,9 @@ export interface ProductInfo {
   id: number;
   name: string;
   description: string;
+  category: string;
   img: string;
   onSale: boolean;
   costPrice: string;
-  salePrice: string;
+  salePrice?: string;
 }

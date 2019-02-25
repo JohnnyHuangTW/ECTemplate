@@ -1,79 +1,24 @@
+<!-- Carousel -->
 <div class="container mb-40">
  <app-carousel></app-carousel>
 </div>
 
 
 <div class="products mb-40">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12">
-        <div class="main-title">
-          <div class="h2">小日子商号 全館7折</div>
+    <!-- Sections -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="main-title">
+                <div class="h2">Section Title</div>
+            </div>
         </div>
-      </div>
     </div>
-
-
-
-    <div class="row">
-      <div class="product-list">
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-          <app-product-thumbnail></app-product-thumbnail>
-        </div>
-      </div>
-
+    <app-product-list [data]="productList" [itemsPerPage]="8"></app-product-list>
     </div>
-
-
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 text-center">
-        <ul class="pagination">
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li class="active"><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+<!-- Advertisements -->
 <div class="jd1 mb-40">
   <div class="container">
     <img src="https://picsum.photos/1200/300?random=30">

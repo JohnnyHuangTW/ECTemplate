@@ -8,6 +8,7 @@
         </p>
         <p *ngIf="!data.onSale" class="price">
             <span>${{data.costPrice}}</span>
+            <del style="visibility: hidden">not on sale</del>
         </p>
     </div>
 </a>

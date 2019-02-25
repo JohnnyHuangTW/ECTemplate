@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductInfo } from 'src/app/interface/ec-template.interface';
 
 @Component({
   selector: 'app-product-thumbnail',
@@ -6,15 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-thumbnail.component.scss']
 })
 export class ProductThumbnailComponent implements OnInit {
-  data = {
-    id: 1,
-    name: 'Product Name',
-    description: 'Product description',
-    img: 'https://picsum.photos/300/320?random',
-    onSale: true,
-    costPrice: '300',
-    salePrice: '150'
-  };
+  @Input()
+  data: ProductInfo;
 
   constructor() {}
 
