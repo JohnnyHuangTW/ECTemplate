@@ -11,13 +11,8 @@ export class FrontPageComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.getProductList();
-  }
-
-  getProductList() {
-    this.dataService.getProductList().subscribe((data: ProductInfo[]) => {
+    this.dataService.productList$.subscribe(data => {
       this.productList = data;
-      console.log('product list:', this.productList);
     });
   }
 }

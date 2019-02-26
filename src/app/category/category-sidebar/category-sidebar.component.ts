@@ -10,10 +10,10 @@ import { CategoryInfo } from 'src/app/interface/ec-template.interface';
 export class CategorySidebarComponent implements OnInit {
   categoryList: CategoryInfo[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(public dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getCategoryList().subscribe((data: CategoryInfo[]) => {
+    this.dataService.categoryList$.subscribe(data => {
       this.categoryList = data;
     });
   }

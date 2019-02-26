@@ -22,4 +22,6 @@ export interface ProductInfo {
 export interface CategoryInfo {
   name: string;
   redirect: string;
+  count?: number;
+  products?: ProductInfo[];
 }

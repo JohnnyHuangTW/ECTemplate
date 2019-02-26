@@ -11,25 +11,3 @@
 .mb-40 {
   margin-bottom: 40px;
 }
-
-
-.my-dropdown-menu li a {
-  position: relative;
-  color: #333;
-}
-
-.my-dropdown-menu li a:hover {
-  color: #f00;
-  background-color: transparent;
-}
-
-.my-dropdown-menu li+li a:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin-left: 1em;
-  margin-right: 1em;
-  border-top: 1px solid #aaa;
-}

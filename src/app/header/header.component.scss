@@ -1,3 +1,25 @@
 .navbar {
   padding-top: 50px;
 }
+
+.my-dropdown-menu li a {
+  padding: 10px 20px;
+  position: relative;
+  color: #333;
+}
+
+.my-dropdown-menu li a:hover {
+  color: #c0392b;
+  background-color: transparent;
+}
+
+.my-dropdown-menu li+li a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-top: 1px solid #aaa;
+}
