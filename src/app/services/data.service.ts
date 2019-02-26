@@ -15,4 +15,7 @@ export class DataService {
   getProductList() {
     return this.http.get('../../assets/data/product-list.json', { headers: this.headers });
   }
+  getCategoryList() {
+    return this.http.get('../../assets/data/category-list.json', { headers: this.headers });
+  }
 }

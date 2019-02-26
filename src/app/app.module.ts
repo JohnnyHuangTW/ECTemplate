@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 // Modules
 import { ComponentsModule } from './components/components.module';
+import { CategoryModule } from './category/category.module';
 // Services
 import { DataService } from './services/data.service';
 // Components
@@ -22,7 +23,14 @@ import { CarouselComponent } from './front-page/carousel/carousel.component';
     FrontPageComponent,
     CarouselComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ComponentsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ComponentsModule,
+    CategoryModule
+  ],
   providers: [DataService],
   bootstrap: [AppComponent]
 })

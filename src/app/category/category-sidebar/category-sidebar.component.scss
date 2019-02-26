@@ -1,0 +1,46 @@
+.cate-menu {
+  padding: 0px;
+  margin-bottom: 15px;
+
+  p {
+    text-transform: uppercase;
+    padding: 10px 25px;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+    font-size: 18px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 25px;
+
+    li {
+      margin-bottom: 8px;
+
+      a {
+        text-transform: capitalize;
+        font-size: 16px;
+        color: #666;
+        text-decoration: none;
+        display: inline-block;
+        max-width: 65%;
+        -webkit-transition: color 0.15s linear;
+        -moz-transition: color 0.15s linear;
+        -o-transition: color 0.15s linear;
+        -ms-transition: color 0.15s linear;
+        transition: color 0.15s linear;
+      }
+
+      .cate-count {
+        color: #666;
+        opacity: 0.5;
+        float: right;
+        position: relative;
+        text-align: right;
+        padding-left: 12px;
+        display: inline-block;
+      }
+    }
+  }
+}

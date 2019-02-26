@@ -1,0 +1,9 @@
+<div class="cate-menu">
+    <p class="global-primary dark-primary ">Categories</p>
+    <ul id="sidebar">
+        <li *ngFor="let category of categoryList">
+            <a [routerLink]="['./'+ category.redirect]">{{category.name}}</a>
+            <span class="cate-count">20</span>
+        </li>
+    </ul>
+</div>

@@ -18,3 +18,8 @@ export interface ProductInfo {
   costPrice: string;
   salePrice?: string;
 }
+
+export interface CategoryInfo {
+  name: string;
+  redirect: string;
+}

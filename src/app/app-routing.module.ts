@@ -2,9 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FrontPageComponent } from './front-page/front-page.component';
+import { CategoryComponent } from './category/category.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { ProductDetailComponent } from './category/product-detail/product-detail.component';
 
 const routes: Routes = [
-  { path: '', component: FrontPageComponent }
+  { path: '', component: FrontPageComponent },
+  {
+    path: 'category',
+    component: CategoryComponent,
+    children: [
+      { path: ':category', component: CategoryListComponent },
+      { path: 'product/:id', component: ProductDetailComponent }
+    ]
+  }
+
   // { path: 'front-page', component: FrontPageComponent }
 ];
 
