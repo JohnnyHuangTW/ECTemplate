@@ -16,17 +16,9 @@ export class CategoryListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService: DataService) {}
 
   ngOnInit() {
-    combineLatest(this.route.params, this.dataService.categoryList$).subscribe((data: any) => {
-      this.currentCategory = data[0]['category'];
-      if (this.currentCategory === 'all') {
-        this.productList = this.dataService.productList$.value;
-      } else {
-        for (const i of data[1]) {
-          if (i.name === this.currentCategory) {
-            this.productList = i.products;
-          }
-        }
-      }
+    this.route.params.subscribe(params => {
+      this.currentCategory = params['category'];
+      this.productList = this.dataService.getProductListByCategory(this.currentCategory);
     });
   }
 }

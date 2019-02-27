@@ -13,8 +13,6 @@ export class CategorySidebarComponent implements OnInit {
   constructor(public dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.categoryList$.subscribe(data => {
-      this.categoryList = data;
-    });
+    this.categoryList = this.dataService.categoryList$.value;
   }
 }

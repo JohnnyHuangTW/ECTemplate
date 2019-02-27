@@ -12,7 +12,7 @@ export class DataService {
   categoryList$ = new BehaviorSubject<CategoryInfo[]>([]);
 
   constructor(private http: HttpClient) {
-    forkJoin(this.getProductList(), this.getCategoryList()).subscribe((data: any) => {
+    forkJoin(this.getAllProductList(), this.getCategoryList()).subscribe((data: any) => {
       this.productList$.next(data[0]);
       console.log('products:', this.productList$.value);
       this.categoryList$.next(data[1]);
@@ -25,7 +25,7 @@ export class DataService {
     this.headers.set(key, value);
   }
 
-  private getProductList() {
+  private getAllProductList() {
     return this.http.get('../../assets/data/product-list.json', { headers: this.headers });
   }
   private getCategoryList() {
@@ -42,6 +42,18 @@ export class DataService {
         if (product.category === c.name) {
           c.count++;
           c.products.push(product);
+        }
+      }
+    }
+  }
+
+  getProductListByCategory(category: string) {
+    if (category === 'all') {
+      return this.productList$.value;
+    } else {
+      for (const i of this.categoryList$.value) {
+        if (i.name === category) {
+          return i.products;
         }
       }
     }

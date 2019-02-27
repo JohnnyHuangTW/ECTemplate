@@ -3,8 +3,9 @@ export interface CarouselInfo {
   description: string;
   img: string;
   button: {
-    content: string;
-    href: string;
+    display: boolean;
+    content?: string;
+    href?: string;
   };
 }
 

@@ -11,7 +11,7 @@
                 <div class="carousel-caption">
                     <h1>{{item.title}}</h1>
                     <p>{{item.description}}</p>
-                    <p><a class="btn btn-lg btn-primary" [href]="item.button.href" role="button">{{item.button.content}}</a></p>
+                    <p *ngIf="item.button.display"><a class="btn btn-lg btn-primary" [href]="item.button.href" role="button">{{item.button.content}}</a></p>
                 </div>
             </div>
         </div>

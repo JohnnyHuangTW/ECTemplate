@@ -12,19 +12,19 @@ export class CarouselComponent implements OnInit {
       title: 'Carousel Title',
       description: 'Carousel Description',
       img: 'https://picsum.photos/2800/700?random=9',
-      button: { content: 'button content', href: '#' }
+      button: { display: false }
     },
     {
       title: 'Carousel Title',
       description: 'Carousel Description',
       img: 'https://picsum.photos/2800/700?random=10',
-      button: { content: 'button content', href: '#' }
+      button: { display: false }
     },
     {
       title: 'Carousel Title',
       description: 'Carousel Description',
       img: 'https://picsum.photos/2800/700?random=11',
-      button: { content: 'button content', href: '#' }
+      button: { display: true, content: 'button content', href: '#' }
     }
   ];
 
