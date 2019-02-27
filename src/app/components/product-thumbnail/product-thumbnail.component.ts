@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductInfo } from 'src/app/interface/ec-template.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-thumbnail',
@@ -10,7 +11,11 @@ export class ProductThumbnailComponent implements OnInit {
   @Input()
   data: ProductInfo;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  directTo() {
+    this.router.navigate([`/category/product/${this.data.id}`]);
+  }
 }

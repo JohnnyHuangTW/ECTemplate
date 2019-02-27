@@ -1,0 +1,32 @@
+.my-container {
+  padding: 15px 0;
+  min-height: 500px;
+}
+
+.caption {
+  padding-left: 0;
+  padding-right: 0;
+
+  h2 {
+    color: #555;
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .price {
+    display: block;
+    font-size: 20px;
+    color: #666;
+
+    del {
+      display: block;
+      font-size: 20px;
+      color: #999;
+    }
+
+    .sale {
+      display: block;
+      color: #c0392b;
+    }
+  }
+}

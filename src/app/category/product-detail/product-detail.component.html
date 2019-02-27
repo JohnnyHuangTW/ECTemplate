@@ -1,3 +1,28 @@
-<p>
-  product-detail works!
-</p>
+<div class="my-container">
+    <div class="row">
+        <!-- Gallery -->
+        <div class="col-md-6 col-sm-12">
+            <ngx-gallery *ngIf="data" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </div>
+        <!-- Product Info -->
+        <div class="col-md-6 col-sm-12">
+            <div class="caption">
+                <h2>{{data.name}}</h2>
+                <h3>{{data.description}}</h3>
+                <!-- On Sale -->
+                <p *ngIf="data.onSale" class="price">
+                    <del>${{data.costPrice}}</del>
+                    <span class="sale">${{data.salePrice}}</span>
+                </p>
+                <!-- Not On Sale -->
+                <p *ngIf="!data.onSale" class="price">
+                    <span>${{data.costPrice}}</span>
+                    <del style="visibility: hidden">not on sale</del>
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

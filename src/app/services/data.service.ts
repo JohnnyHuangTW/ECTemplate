@@ -58,4 +58,10 @@ export class DataService {
       }
     }
   }
+
+  getProductById(productId: string) {
+    return this.productList$.value.find(function(item, index, array) {
+      return item.id === productId;
+    });
+  }
 }

@@ -10,11 +10,13 @@ export interface CarouselInfo {
 }
 
 export interface ProductInfo {
-  id: number;
+  id: string;
   name: string;
   description: string;
+  detail: string;
   category: string;
   img: string;
+  gallery: string[];
   onSale: boolean;
   costPrice: string;
   salePrice?: string;
