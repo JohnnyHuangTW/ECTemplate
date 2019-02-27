@@ -50,4 +50,7 @@ export class ProductDetailComponent implements OnInit {
       }
     ];
   }
+  dropdownOnChange(event) {
+    console.log('current value', event);
+  }
 }

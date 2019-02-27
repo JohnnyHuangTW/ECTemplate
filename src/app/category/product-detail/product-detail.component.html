@@ -20,6 +20,8 @@
                     <del style="visibility: hidden">not on sale</del>
                 </p>
             </div>
+            <!-- Dropdown -->
+            <app-dropdown [data]="data.options" [header]="'Size'" (selected)="dropdownOnChange($event)"></app-dropdown>
 
 
         </div>

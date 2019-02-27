@@ -16,10 +16,11 @@ export interface ProductInfo {
   detail: string;
   category: string;
   img: string;
-  gallery: string[];
+  gallery?: string[];
   onSale: boolean;
   costPrice: string;
   salePrice?: string;
+  options?: string[];
 }
 
 export interface CategoryInfo {
