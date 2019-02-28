@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit {
       this.data = this.dataService.getProductById(params['id']);
 
       this.getRelatedProducts();
+      this.scrollToTop();
 
       this.galleryImages = [];
       // insert main image
@@ -69,5 +70,9 @@ export class ProductDetailComponent implements OnInit {
 
   quantityOnChange(event: number) {
     console.log('quantity value', event);
+  }
+
+  scrollToTop() {
+    window.scroll(0, 0);
   }
 }
