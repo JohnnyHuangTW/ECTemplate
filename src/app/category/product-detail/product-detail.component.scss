@@ -3,9 +3,24 @@
   min-height: 500px;
 }
 
+.gallery {
+  margin-bottom: 20px;
+}
+
+hr {
+  height: 0;
+  box-sizing: content-box;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
 .caption {
   padding-left: 0;
   padding-right: 0;
+  height: 225px;
+  position: relative;
 
   h2 {
     color: #555;
@@ -21,6 +36,8 @@
 
   .price {
     display: block;
+    position: absolute;
+    bottom: 0px;
     font-size: 20px;
     color: #666;
 
@@ -34,5 +51,36 @@
       display: block;
       color: #c0392b;
     }
+  }
+}
+
+.add-cart-btn {
+  width: 100%;
+  border-radius: 0px;
+  background-color: black;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.des-header,
+.rd-header {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #555;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.des-content {
+  min-height: 300px
+}
+
+
+
+@media screen and (min-width:992px) {
+  .caption {
+    height: 235px;
   }
 }

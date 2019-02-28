@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   data: ProductInfo;
+  relatedProducts: ProductInfo[] = [];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
@@ -18,6 +19,9 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.data = this.dataService.getProductById(params['id']);
+
+      this.getRelatedProducts();
+
       this.galleryImages = [];
       // insert main image
       this.galleryImages.push({ small: this.data.img, medium: this.data.img, big: this.data.img });
@@ -29,6 +33,7 @@ export class ProductDetailComponent implements OnInit {
 
     this.galleryOptions = [
       // refer to https://github.com/lukasz-galka/ngx-gallery
+      // RWD settings
       {
         width: '100%',
         height: '300px',
@@ -36,7 +41,7 @@ export class ProductDetailComponent implements OnInit {
         imageAnimation: NgxGalleryAnimation.Slide
       },
       {
-        breakpoint: 800,
+        breakpoint: 768,
         width: '100%',
         height: '600px',
         imagePercent: 80,
@@ -49,6 +54,14 @@ export class ProductDetailComponent implements OnInit {
         preview: false
       }
     ];
+  }
+
+  getRelatedProducts() {
+    this.relatedProducts = this.dataService.getRelatedProductsByCategory(
+      this.data.id,
+      this.data.category,
+      4
+    );
   }
   dropdownOnChange(event: string) {
     console.log('dropdown value', event);

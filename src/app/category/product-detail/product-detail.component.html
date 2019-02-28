@@ -1,11 +1,13 @@
 <div class="my-container">
     <div class="row">
         <!-- Gallery -->
-        <div class="col-md-6 col-sm-12">
-            <ngx-gallery *ngIf="data" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        <div class="col-sm-6 col-xs-12">
+            <div *ngIf="data" class="gallery">
+                <ngx-gallery  [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+            </div>
         </div>
         <!-- Product Info -->
-        <div class="col-md-6 col-sm-12">
+        <div class="col-sm-6 col-xs-12">
             <div class="caption">
                 <h2>{{data.name}}</h2>
                 <h3>{{data.description}}</h3>
@@ -22,8 +24,31 @@
             </div>
             <!-- Dropdown -->
             <app-dropdown [data]="data.options" [header]="'Size'" (selected)="dropdownOnChange($event)"></app-dropdown>
+            <!-- Quantity Input -->
             <app-quantity-input [header]="'Quantity'" (valueChanged)="quantityOnChange($event)"></app-quantity-input>
+            <!-- Add to Cart -->
+            <button type="button" class="btn btn-primary add-cart-btn">Add to Cart</button>
 
+        </div>
+    </div>
+    <hr>
+    <!-- Description -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="des-header">Description</h3>
+            <div class="des-content">
+                {{data.detail}}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Related Products -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="rd-header">Related Products</h3>
+            <div *ngFor="let rp of relatedProducts" class="col-xs-12 col-sm-3">
+                <app-product-thumbnail [data]="rp"></app-product-thumbnail>
+            </div>
         </div>
     </div>
 

@@ -64,4 +64,18 @@ export class DataService {
       return item.id === productId;
     });
   }
+
+  getRelatedProductsByCategory(productId: string, category: string, amount: number) {
+    const relatedProducts: ProductInfo[] = [];
+    for (const c of this.categoryList$.value) {
+      if (c.name === category) {
+        for (let i = 0; i <= amount && c.products.length; i++) {
+          if (c.products[i].id !== productId) {
+            relatedProducts.push(c.products[i]);
+          }
+        }
+      }
+    }
+    return relatedProducts;
+  }
 }
