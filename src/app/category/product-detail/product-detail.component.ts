@@ -50,7 +50,11 @@ export class ProductDetailComponent implements OnInit {
       }
     ];
   }
-  dropdownOnChange(event) {
-    console.log('current value', event);
+  dropdownOnChange(event: string) {
+    console.log('dropdown value', event);
+  }
+
+  quantityOnChange(event: number) {
+    console.log('quantity value', event);
   }
 }

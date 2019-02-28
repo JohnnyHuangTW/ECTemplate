@@ -1,0 +1,21 @@
+.input-header {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.input-group {
+  width: 200px;
+}
+
+.quantity-input {
+  text-align: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width:767px) {
+  .input-group {
+    width: 100%;
+  }
+}

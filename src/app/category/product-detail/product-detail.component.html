@@ -22,7 +22,7 @@
             </div>
             <!-- Dropdown -->
             <app-dropdown [data]="data.options" [header]="'Size'" (selected)="dropdownOnChange($event)"></app-dropdown>
-
+            <app-quantity-input [header]="'Quantity'" (valueChanged)="quantityOnChange($event)"></app-quantity-input>
 
         </div>
     </div>

@@ -1,0 +1,17 @@
+<label *ngIf="header" class="input-header">{{header}}</label>
+<div class="input-group">
+    <!-- - button -->
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default btn-number" [disabled]="value === 1" (click)="onMinus()">
+            <span class="glyphicon glyphicon-minus"></span>
+        </button>
+    </span>
+    <!-- Input -->
+    <input #q_input type="text" class="form-control input-number quantity-input" [value]="value" (keyup)="onChanged(q_input.value)">
+    <!-- + button -->
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default btn-number" (click)="onPlus()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </span>
+</div>
