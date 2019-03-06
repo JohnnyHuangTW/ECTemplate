@@ -1,1 +1,58 @@
+a.cart {
+  position: fixed;
+  bottom: 24px;
+  right: 0;
+  border-radius: 0px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  width: 60px;
+  height: 72px;
+  font-size: 18px;
+  text-align: center;
+  color: #616161;
+  text-decoration: none;
+  display: block;
+  background: rgba(0, 0, 0, .5) url(http://images.vfl.ru/ii/1484930184/14435803/15757225.png
+) center no-repeat;
+  background-size: 36px;
 
+}
+
+a.cart>span {
+  width: 18px;
+  height: 18px;
+  font-size: 8px;
+  color: #fff;
+  line-height: 18px;
+  position: absolute;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  display: block;
+  transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  -moz-transform: scale(0);
+  -webkit-transform: scale(0);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: #ffab00;
+}
+
+a.cart>span.counter {
+  left: 30px;
+  bottom: 35px;
+  -webkit-transition: .2s linear;
+  -moz-transition: .2s linear;
+  -ms-transition: .2s linear;
+  -o-transition: .2s linear;
+  transition: .2s linear;
+  transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+}
