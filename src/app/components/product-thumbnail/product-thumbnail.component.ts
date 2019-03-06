@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 export class ProductThumbnailComponent implements OnInit {
   @Input()
   data: ProductInfo;
+  @Input()
+  width = '300';
+  @Input()
+  height = '320';
 
   constructor(private router: Router) {}
 
@@ -17,5 +21,9 @@ export class ProductThumbnailComponent implements OnInit {
 
   directTo() {
     this.router.navigate([`/category/product/${this.data.id}`]);
+  }
+
+  getImgMinHeight() {
+    return `calc(100% * ${this.height} / ${this.width})`;
   }
 }

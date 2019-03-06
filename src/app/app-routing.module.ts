@@ -5,6 +5,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { CategoryComponent } from './category/category.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { ProductDetailComponent } from './category/product-detail/product-detail.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: '', component: FrontPageComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: ':category', component: CategoryListComponent },
       { path: 'product/:id', component: ProductDetailComponent }
     ]
-  }
+  },
+  { path: 'shopping-cart', component: ShoppingCartComponent }
 
   // { path: 'front-page', component: FrontPageComponent }
 ];

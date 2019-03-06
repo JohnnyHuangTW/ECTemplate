@@ -14,6 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { CarouselComponent } from './front-page/carousel/carousel.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CartCardComponent } from './shopping-cart/cart-card/cart-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CarouselComponent } from './front-page/carousel/carousel.component';
     HeaderComponent,
     FooterComponent,
     FrontPageComponent,
-    CarouselComponent
+    CarouselComponent,
+    ShoppingCartComponent,
+    CartCardComponent
   ],
   imports: [
     BrowserModule,
