@@ -57,11 +57,22 @@ hr {
 .add-cart-btn {
   width: 100%;
   border-radius: 0px;
-  background-color: black;
+  background-color: #00bcaa;
+  border-color: #00bcaa;
   margin-top: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 400;
+}
+
+.btn-disabled {
+  background-color: #00bcaa80;
+  border-color: white;
+}
+
+.btn-disabled:hover {
+  background-color: #00bcaa80;
+  border-color: white;
 }
 
 .des-header,

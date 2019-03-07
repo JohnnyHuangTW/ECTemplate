@@ -23,7 +23,7 @@
                 </li>
                 <li><a href="#">Menu 4</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a [routerLink]="'./shopping-cart'" class="cart">Shopping Cart<span class="badge my-badge">23</span></a></li>
+                <li><a [routerLink]="'./shopping-cart'" class="cart">Shopping Cart<span class="badge my-badge">{{dataService.shoppingCartData.length}}</span></a></li>
             </ul>
         </div>
     </div>

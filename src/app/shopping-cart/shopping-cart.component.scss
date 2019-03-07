@@ -1,0 +1,128 @@
+.sc-header {
+  text-transform: uppercase;
+  padding: 10px 25px;
+  margin-bottom: 0px;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+hr {
+  height: 0;
+  box-sizing: content-box;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.cart-wrap {
+  list-style: none;
+
+  .cart-item {
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    padding: 1.5em;
+    border-bottom: 1px solid #fafafa;
+
+    .info-wrap {
+      display: table;
+      width: 100%;
+
+      .cart-section {
+        display: table-cell;
+        vertical-align: middle;
+
+      }
+
+      .product-info {
+        img {
+          float: left;
+          width: 8em;
+          display: inline;
+          padding-right: 1em;
+        }
+
+        .item-number {
+          display: inline-block;
+          font-size: .75em;
+          color: #777;
+          margin-bottom: 0px;
+        }
+
+        .item-name {
+          margin-top: 0px;
+          font-size: 1em;
+          font-family: "Montserrat", sans-serif;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: .025em;
+        }
+
+        .qty {
+          display: inline-block;
+          font-size: .85em;
+          color: #777777;
+          font-family: "Montserrat", sans-serif;
+
+          .qty-input {
+            width: 2em;
+            text-align: center;
+            font-size: 1em;
+            padding: .25em;
+            margin: 1em .5em 0 0;
+          }
+        }
+
+        .stock-status {
+          font-family: "Montserrat", sans-serif;
+          color: #82CA9C;
+          font-weight: bold;
+          padding: .5em 0 0 1em;
+          text-transform: uppercase;
+          display: inline-block;
+          font-size: .85em;
+        }
+
+      }
+
+      .price-total {
+        text-align: center;
+
+        p {
+          font-weight: bold;
+          font-size: 1.25em;
+          display: inline-block;
+          color: #777777;
+          font-family: "Montserrat", sans-serif;
+        }
+      }
+
+      .remove-wrap {
+        .remove-button {
+          text-decoration: none;
+          font-family: "Montserrat", sans-serif;
+          color: #ffffff;
+          font-weight: bold;
+          background: #e0e0e0;
+          padding: .5em;
+          font-size: .75em;
+          display: inline-block;
+          border-radius: 100%;
+          line-height: .85;
+          -webkit-transition: all 0.25s linear;
+          -moz-transition: all 0.25s linear;
+          -ms-transition: all 0.25s linear;
+          -o-transition: all 0.25s linear;
+          transition: all 0.25s linear;
+        }
+
+        .remove-button:hover {
+          background: #f30;
+        }
+      }
+    }
+  }
+
+
+}

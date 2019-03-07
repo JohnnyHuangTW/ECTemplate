@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   data: ProductInfo;
+  quantity = 1;
   relatedProducts: ProductInfo[] = [];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
@@ -70,6 +71,14 @@ export class ProductDetailComponent implements OnInit {
 
   quantityOnChange(event: number) {
     console.log('quantity value', event);
+    this.quantity = event;
+  }
+
+  addToCart() {
+    this.dataService.addShoppingCartItem({
+      product: this.data,
+      quantity: this.quantity
+    });
   }
 
   scrollToTop() {

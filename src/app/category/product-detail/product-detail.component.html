@@ -27,8 +27,7 @@
             <!-- Quantity Input -->
             <app-quantity-input [header]="'Quantity'" (valueChanged)="quantityOnChange($event)"></app-quantity-input>
             <!-- Add to Cart -->
-            <button type="button" class="btn btn-primary add-cart-btn">Add to Cart</button>
-
+            <button type="button" class="btn btn-primary add-cart-btn" [class.btn-disabled]="!data.inStock" [disabled]="!data.inStock" (click)="addToCart()">{{data.inStock? "Add to Cart" : "Out of Stock"}}</button>
         </div>
     </div>
     <hr>

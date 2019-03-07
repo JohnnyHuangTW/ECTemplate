@@ -21,6 +21,7 @@ export interface ProductInfo {
   costPrice: string;
   salePrice?: string;
   options?: string[];
+  inStock: boolean;
 }
 
 export interface CategoryInfo {
@@ -28,4 +29,9 @@ export interface CategoryInfo {
   redirect: string;
   count?: number;
   products?: ProductInfo[];
+}
+
+export interface ShoppingCartItem {
+  product: ProductInfo;
+  quantity: number;
 }

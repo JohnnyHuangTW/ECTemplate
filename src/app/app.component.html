@@ -5,4 +5,4 @@
 <app-footer></app-footer>
 
 <!-- Side Shopping Cart -->
-<a class="hidden-xs cart" [routerLink]="'./shopping-cart'"><span class="counter">3</span></a>
+<a class="hidden-xs cart" [routerLink]="'./shopping-cart'"><span class="counter">{{dataService.shoppingCartData.length}}</span></a>
