@@ -2,38 +2,66 @@
     <h1 class="sc-header">Shopping Cart</h1>
     <hr>
     <!-- Cart Cards -->
-    <div class="col-md-9 col-xs-12">
+    <div class="col-md-8 col-xs-12">
         <ul class="cart-wrap">
 
-            <li class="cart-item">
+            <li *ngFor="let item of data; let i = index" class="cart-item" [class.even-section]="i%2 == 0">
                 <div class="info-wrap">
                     <!-- Product Info -->
                     <div class="cart-section product-info">
-                        <img src="https://picsum.photos/300/320?random=23">
-                        <p class="item-number">#test</p>
-                        <h3 class="item-name">Product Name</h3>
+                        <img [src]="item.product.img">
+                        <p class="item-number">#{{item.product.id}}</p>
+                        <h3 class="item-name">{{item.product.name}}</h3>
                         <p class="qty">
-                            <input type="text" class="qty-input">
-                            x $1900
+                            <input type="text" class="qty-input" [(ngModel)]="item.quantity" (keyup)="updateItem(item)">
+                            x ${{item.product.onSale? item.product.salePrice: item.product.costPrice}}
                         </p>
-                        <p class="stock-status">In Stock</p>
+                        <p class="stock-status" [class.out-stock]="!item.product.inStock">{{item.product.inStock? "In Stock": "Out of Stock"}}</p>
                     </div>
                     <!-- Total Price -->
                     <div class="cart-section price-total">
-                        <p>$1900</p>
+                        <p>${{getTotalPrice(item)}}</p>
                     </div>
                     <div class="cart-section remove-wrap">
-                        <a class="remove-button">x</a>
+                        <a class="remove-button" (click)="removeItem(item)">x</a>
                     </div>
                 </div>
             </li>
-
-
         </ul>
+
+        <a class="btn btn-continue pull-right" [routerLink]="'../category/all'">
+            Continue Shopping <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
     </div>
 
-    <div class="col-md-3 col-xs-12">
-        price
+    <div class="col-md-4 col-xs-12">
+        <section class="order-summary">
+            <div class="section-header">
+                <h3>Order Summary</h3>
+            </div>
+            <div class="section-body">
+                <div>
+                    <div class="price-info">
+                        <span class="pull-left">Subtotal</span>
+                        <span class="pull-right">${{subTotal}}</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="pull-left">Shipping</span>
+                        <span class="pull-right">${{shippingFee}}</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="pull-left">Tax({{taxPercentage}}%)</span>
+                        <span class="pull-right">${{tax}}</span>
+                    </div>
+                    <hr>
+                    <div class="price-info total">
+                        <span class="pull-left">Total</span>
+                        <span class="pull-right">${{total}}</span>
+                    </div>
+                    <a class="btn btn-success btn-check-out">CHECK OUT</a>
+                </div>
+            </div>
+        </section>
     </div>
 
 
