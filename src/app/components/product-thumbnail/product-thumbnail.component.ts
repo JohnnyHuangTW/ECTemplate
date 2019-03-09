@@ -15,15 +15,13 @@ export class ProductThumbnailComponent implements OnInit {
   @Input()
   height = '320';
 
+  defaultImage = 'assets/images/default-image.png';
+
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
   directTo() {
     this.router.navigate([`/category/product/${this.data.id}`]);
-  }
-
-  getImgMinHeight() {
-    return `calc(100% * ${this.height} / ${this.width})`;
   }
 }

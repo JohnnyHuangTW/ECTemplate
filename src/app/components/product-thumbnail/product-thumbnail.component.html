@@ -1,5 +1,5 @@
 <a (click)="directTo()" class="thumbnail">
-    <img [src]="data.img" [ngStyle]="{'min-height': getImgMinHeight()}">
+    <img [defaultImage]="defaultImage" [lazyLoad]="data.img" [offset]="0">
     <div class="caption">
         <h2>{{data.name}}</h2>
         <p *ngIf="data.onSale" class="price">
