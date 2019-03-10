@@ -1,8 +1,15 @@
 <div class="container">
     <h1 class="sc-header">Shopping Cart</h1>
     <hr>
+    <!-- Shopping Cart Empty -->
+    <div *ngIf="data.length === 0" class="col-md-12">
+        <h3 class="empty"><i>Your Shopping Cart is Empty</i></h3>
+        <a class="btn btn-continue pull-right" [routerLink]="'../category/all'">
+            Continue Shopping <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
+    </div>
     <!-- Cart Cards -->
-    <div class="col-md-8 col-xs-12">
+    <div *ngIf="data.length !== 0" class="col-md-8 col-xs-12">
         <ul class="cart-wrap">
 
             <li *ngFor="let item of data; let i = index" class="cart-item" [class.even-section]="i%2 == 0">
@@ -34,7 +41,7 @@
         </a>
     </div>
 
-    <div class="col-md-4 col-xs-12">
+    <div *ngIf="data.length !== 0" class="col-md-4 col-xs-12">
         <section class="order-summary">
             <div class="section-header">
                 <h3>Order Summary</h3>

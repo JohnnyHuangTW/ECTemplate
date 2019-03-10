@@ -84,8 +84,8 @@ export class DataService {
     const relatedProducts: ProductInfo[] = [];
     for (const c of this.categoryList$.value) {
       if (c.name === category) {
-        for (let i = 0; i <= amount && c.products.length; i++) {
-          if (c.products[i].id !== productId) {
+        for (let i = 0; relatedProducts.length < amount; i++) {
+          if (c.products[i] && c.products[i].id !== productId) {
             relatedProducts.push(c.products[i]);
           }
         }
