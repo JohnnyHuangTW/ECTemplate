@@ -15,7 +15,7 @@ export class ProductThumbnailComponent implements OnInit {
   @Input()
   height = '320';
 
-  defaultImage = 'assets/images/default-image.png';
+  defaultImage = './assets/images/default-image.png';
 
   constructor(private router: Router) {}
 

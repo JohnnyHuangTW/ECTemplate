@@ -41,10 +41,10 @@ export class DataService {
   }
 
   private getAllProductList() {
-    return this.http.get('../../assets/data/product-list.json', { headers: this.headers });
+    return this.http.get('./assets/data/product-list.json', { headers: this.headers });
   }
   private getCategoryList() {
-    return this.http.get('../../assets/data/category-list.json', { headers: this.headers });
+    return this.http.get('./assets/data/category-list.json', { headers: this.headers });
   }
   private setCategoryCount() {
     // reset
