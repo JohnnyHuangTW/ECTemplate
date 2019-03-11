@@ -1,0 +1,39 @@
+[{
+    "name": "Menu 1",
+    "hasChildren": true,
+    "children": [{
+      "name": "Category 1",
+      "redirect": "Category 1"
+    }, {
+      "name": "Category 2",
+      "redirect": "Category 2"
+    }, {
+      "name": "Category 3",
+      "redirect": "Category 3"
+    }, {
+      "name": "Category 4",
+      "redirect": "Category 4"
+    }, {
+      "name": "Category 5",
+      "redirect": "Category 5"
+    }]
+  },
+  {
+    "name": "Menu 2",
+    "hasChildren": false,
+    "redirect": "empty"
+  },
+  {
+    "name": "Menu 3",
+    "hasChildren": false,
+    "redirect": "empty"
+  }, {
+    "name": "Menu 4",
+    "hasChildren": false,
+    "redirect": "empty"
+  }, {
+    "name": "About Us",
+    "hasChildren": false,
+    "redirect": "empty"
+  }
+]
