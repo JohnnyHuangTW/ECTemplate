@@ -6,6 +6,7 @@
   z-index: 9999;
 }
 
+
 .my-dropdown-menu li a {
   cursor: pointer;
   padding: 10px 20px;
@@ -33,9 +34,11 @@
   cursor: pointer;
 }
 
+
 .logo {
   font-size: 30px;
   text-transform: uppercase;
+  cursor: pointer;
 
   span {
     font-weight: 300;

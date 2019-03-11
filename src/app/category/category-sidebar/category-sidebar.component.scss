@@ -21,7 +21,7 @@
       a {
         text-transform: capitalize;
         font-size: 16px;
-        color: #666;
+        color: #999;
         text-decoration: none;
         display: inline-block;
         max-width: 65%;
@@ -43,4 +43,8 @@
       }
     }
   }
+}
+
+.active-link {
+  color: #666 !important;
 }

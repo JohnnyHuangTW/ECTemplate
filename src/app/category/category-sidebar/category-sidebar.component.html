@@ -2,11 +2,11 @@
     <p class="global-primary dark-primary">Categories</p>
     <ul id="sidebar">
         <li>
-            <a [routerLink]="['./all']">All</a>
+            <a [routerLink]="['./all']" routerLinkActive="active-link">All</a>
             <span class="cate-count">{{dataService.productList$.value.length}}</span>
         </li>
         <li *ngFor="let category of categoryList">
-            <a [routerLink]="['./'+ category.redirect]">{{category.name}}</a>
+            <a [routerLink]="['./'+ category.redirect]" routerLinkActive="active-link">{{category.name}}</a>
             <span class="cate-count">{{category.count}}</span>
         </li>
     </ul>
