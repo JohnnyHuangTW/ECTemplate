@@ -22,8 +22,8 @@ export class DropdownComponent implements OnInit {
     this.defaultValue = this.data[0].value;
   }
 
-  onSelect(value: string) {
-    this.defaultValue = value;
-    this.selected.emit(value);
+  onSelect(item: DropdownItem) {
+    this.defaultValue = item.value;
+    this.selected.emit(item);
   }
 }

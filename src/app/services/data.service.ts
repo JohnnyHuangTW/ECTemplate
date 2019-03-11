@@ -7,6 +7,7 @@ import {
   MenuInfo
 } from '../interface/ec-template.interface';
 import { BehaviorSubject, forkJoin } from 'rxjs';
+import { NotifierService } from 'angular-notifier';
 
 const SHOPPING_CART_KEY = 'shopping-cart-data';
 
@@ -20,7 +21,7 @@ export class DataService {
   menuList$ = new BehaviorSubject<MenuInfo[]>([]);
   shoppingCartData: ShoppingCartItem[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private notifierService: NotifierService) {
     forkJoin(this.getAllProductList(), this.getCategoryList(), this.getMenuList()).subscribe(
       (data: any) => {
         this.productList$.next(data[0]);
@@ -117,11 +118,11 @@ export class DataService {
   addShoppingCartItem(item: ShoppingCartItem) {
     if (
       this.shoppingCartData.find(data => {
-        return data.product.id === item.product.id;
+        return data.product.id === item.product.id && data.option.value === item.option.value;
       })
     ) {
       for (const i of this.shoppingCartData) {
-        if (i.product.id === item.product.id) {
+        if (i.product.id === item.product.id && i.option.value === item.option.value) {
           i.quantity = i.quantity + item.quantity;
         }
       }
@@ -130,6 +131,10 @@ export class DataService {
     }
     console.log('item added:', this.shoppingCartData);
     this.setLocalStorage(SHOPPING_CART_KEY, this.shoppingCartData);
+    this.notifierService.notify(
+      'default',
+      `Add ${item.product.name} - ${item.option.name.toUpperCase()} to cart`
+    );
   }
 
   editShoppingCartItem(item: ShoppingCartItem) {
@@ -145,9 +150,13 @@ export class DataService {
 
   deleteShoppingCartItem(item: ShoppingCartItem) {
     this.shoppingCartData = this.shoppingCartData.filter(
-      data => data.product.id !== item.product.id
+      data => !(data.product.id === item.product.id && data.option.value === item.option.value)
     );
     console.log('item removed:', this.shoppingCartData);
     this.setLocalStorage(SHOPPING_CART_KEY, this.shoppingCartData);
+    this.notifierService.notify(
+      'warning',
+      `Remove ${item.product.name} - ${item.option.name.toUpperCase()}`
+    );
   }
 }

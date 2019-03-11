@@ -18,7 +18,7 @@
                     <div class="cart-section product-info">
                         <img [src]="item.product.img">
                         <p class="item-number">#{{item.product.id}}</p>
-                        <h3 class="item-name">{{item.product.name}}</h3>
+                        <h3 class="item-name">{{item.product.name}} - {{item.option.name}}</h3>
                         <p class="qty">
                             <input type="text" class="qty-input" [(ngModel)]="item.quantity" (keyup)="updateItem(item)">
                             x ${{item.product.onSale? item.product.salePrice: item.product.costPrice}}

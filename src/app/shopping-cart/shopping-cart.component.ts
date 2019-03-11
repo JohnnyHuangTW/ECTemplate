@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ShoppingCartItem } from '../interface/ec-template.interface';
-import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,7 +16,7 @@ export class ShoppingCartComponent implements OnInit {
   tax = 0;
   total = 0;
 
-  constructor(private dataService: DataService, private notifierService: NotifierService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.data = this.dataService.shoppingCartData;
@@ -32,8 +31,6 @@ export class ShoppingCartComponent implements OnInit {
   removeItem(item: ShoppingCartItem) {
     this.dataService.deleteShoppingCartItem(item);
     this.data = this.dataService.shoppingCartData;
-    this.notifierService.notify('warning', `Remove ${item.product.name}!`);
-    this.getOrderSummary();
   }
 
   getTotalPrice(item: ShoppingCartItem) {

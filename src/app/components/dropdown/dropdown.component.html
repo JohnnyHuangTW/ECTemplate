@@ -6,6 +6,6 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li *ngIf="header" class="dropdown-header">{{header}}</li>
         <!-- Item List -->
-        <li *ngFor="let item of data" (click)="onSelect(item.value)"><a>{{item.name}}</a></li>
+        <li *ngFor="let item of data" (click)="onSelect(item)"><a>{{item.name}}</a></li>
     </ul>
 </div>

@@ -1,3 +1,5 @@
+import { DropdownItem } from './universal.interface';
+
 export interface CarouselInfo {
   title: string;
   description: string;
@@ -27,7 +29,7 @@ export interface ProductInfo {
   onSale: boolean;
   costPrice: string;
   salePrice?: string;
-  options?: string[];
+  options?: DropdownItem[];
   inStock: boolean;
 }
 
@@ -41,4 +43,5 @@ export interface CategoryInfo {
 export interface ShoppingCartItem {
   product: ProductInfo;
   quantity: number;
+  option: DropdownItem;
 }

@@ -3,7 +3,7 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 import { ProductInfo } from 'src/app/interface/ec-template.interface';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+import { DropdownItem } from 'src/app/interface/universal.interface';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,19 +13,17 @@ import { NotifierService } from 'angular-notifier';
 export class ProductDetailComponent implements OnInit {
   data: ProductInfo;
   quantity = 1;
+  option = <DropdownItem>{};
   relatedProducts: ProductInfo[] = [];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(
-    private dataService: DataService,
-    private route: ActivatedRoute,
-    private notifierService: NotifierService
-  ) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.data = this.dataService.getProductById(params['id']);
+      this.option = this.data.options[0];
 
       this.getRelatedProducts();
       this.scrollToTop();
@@ -71,8 +69,9 @@ export class ProductDetailComponent implements OnInit {
       4
     );
   }
-  dropdownOnChange(event: string) {
+  dropdownOnChange(event: DropdownItem) {
     console.log('dropdown value', event);
+    this.option = event;
   }
 
   quantityOnChange(event: number) {
@@ -83,9 +82,9 @@ export class ProductDetailComponent implements OnInit {
   addToCart() {
     this.dataService.addShoppingCartItem({
       product: this.data,
-      quantity: this.quantity
+      quantity: this.quantity,
+      option: this.option
     });
-    this.notifierService.notify('default', `Add ${this.data.name} to cart!`);
   }
 
   scrollToTop() {
