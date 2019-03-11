@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ProductInfo, CategoryInfo, ShoppingCartItem } from '../interface/ec-template.interface';
+import {
+  ProductInfo,
+  CategoryInfo,
+  ShoppingCartItem,
+  MenuInfo
+} from '../interface/ec-template.interface';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 
 const SHOPPING_CART_KEY = 'shopping-cart-data';
@@ -12,16 +17,21 @@ export class DataService {
   headers = new HttpHeaders();
   productList$ = new BehaviorSubject<ProductInfo[]>([]);
   categoryList$ = new BehaviorSubject<CategoryInfo[]>([]);
+  menuList$ = new BehaviorSubject<MenuInfo[]>([]);
   shoppingCartData: ShoppingCartItem[] = [];
 
   constructor(private http: HttpClient) {
-    forkJoin(this.getAllProductList(), this.getCategoryList()).subscribe((data: any) => {
-      this.productList$.next(data[0]);
-      console.log('products:', this.productList$.value);
-      this.categoryList$.next(data[1]);
-      console.log('categories:', this.categoryList$.value);
-      this.setCategoryCount();
-    });
+    forkJoin(this.getAllProductList(), this.getCategoryList(), this.getMenuList()).subscribe(
+      (data: any) => {
+        this.productList$.next(data[0]);
+        console.log('products:', this.productList$.value);
+        this.categoryList$.next(data[1]);
+        console.log('categories:', this.categoryList$.value);
+        this.menuList$.next(data[2]);
+        console.log('menus:', this.menuList$.value);
+        this.setCategoryCount();
+      }
+    );
   }
 
   setHeaders(key: string, value: string) {
@@ -42,6 +52,9 @@ export class DataService {
 
   private getAllProductList() {
     return this.http.get('./assets/data/product-list.json', { headers: this.headers });
+  }
+  private getMenuList() {
+    return this.http.get('./assets/data/menu-list.json', { headers: this.headers });
   }
   private getCategoryList() {
     return this.http.get('./assets/data/category-list.json', { headers: this.headers });

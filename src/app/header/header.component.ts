@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { CategoryInfo } from '../interface/ec-template.interface';
+import { MenuInfo } from '../interface/ec-template.interface';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +8,13 @@ import { CategoryInfo } from '../interface/ec-template.interface';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  categoryList: CategoryInfo[] = [];
+  menuList: MenuInfo[] = [];
 
   constructor(public dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.categoryList$.subscribe(data => {
-      this.categoryList = data;
+    this.dataService.menuList$.subscribe(data => {
+      this.menuList = data;
     });
   }
 }

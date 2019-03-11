@@ -9,6 +9,13 @@ export interface CarouselInfo {
   };
 }
 
+export interface MenuInfo {
+  name: string;
+  hasChildren: boolean;
+  redirect?: string;
+  children?: MenuInfo[];
+}
+
 export interface ProductInfo {
   id: string;
   name: string;

@@ -13,16 +13,17 @@
         <!-- Hide for mobile devices -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <!-- Right Menu -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a>Menu 1</a></li>
-                <li><a>Menu 2</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Menu 3<b class="caret"></b></a>
-                    <ul class="dropdown-menu my-dropdown-menu">
-                        <li *ngFor="let category of categoryList" [routerLink]="['category/'+ category.redirect]"><a>{{category.name}}</a></li>
+            <ul *ngIf="menuList" class="nav navbar-nav navbar-right">
+                <li *ngFor="let menu of menuList" [class.dropdown]="menu.hasChildren">
+                    <!-- Have SubMenu -->
+                    <a *ngIf="menu.hasChildren" class="dropdown-toggle" data-toggle="dropdown">{{menu.name}}<b class="caret"></b></a>
+                    <ul *ngIf="menu.hasChildren" class="dropdown-menu my-dropdown-menu">
+                        <li *ngFor="let subMenu of menu.children" [routerLink]="['category/'+ subMenu.redirect]"><a>{{subMenu.name}}</a></li>
                     </ul>
+                    <!-- No SubMenu -->
+                    <a *ngIf="!menu.hasChildren" [routerLink]="[menu.redirect]">{{menu.name}}</a>
                 </li>
-                <li><a>Menu 4</a></li>
-                <li><a>About Us</a></li>
+                <!-- Shopping Cart -->
                 <li><a [routerLink]="'./shopping-cart'" class="cart">Shopping Cart<span class="badge my-badge">{{dataService.shoppingCartData.length}}</span></a></li>
             </ul>
         </div>

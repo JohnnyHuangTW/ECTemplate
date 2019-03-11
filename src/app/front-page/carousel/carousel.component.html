@@ -10,8 +10,8 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>{{item.title}}</h1>
-                    <p>{{item.description}}</p>
-                    <p *ngIf="item.button.display"><a class="btn btn-lg btn-primary" [href]="item.button.href" role="button">{{item.button.content}}</a></p>
+                    <p class="hidden-xs hidden-sm">{{item.description}}</p>
+                    <p *ngIf="item.button.display" class="hidden-xs hidden-sm"><a class="btn btn-lg btn-primary" [href]="item.button.href" role="button">{{item.button.content}}</a></p>
                 </div>
             </div>
         </div>
