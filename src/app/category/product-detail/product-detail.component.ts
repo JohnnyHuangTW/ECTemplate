@@ -3,6 +3,8 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 import { ProductInfo } from 'src/app/interface/ec-template.interface';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -15,7 +17,11 @@ export class ProductDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) {}
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private notifierService: NotifierService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -79,6 +85,7 @@ export class ProductDetailComponent implements OnInit {
       product: this.data,
       quantity: this.quantity
     });
+    this.notifierService.notify('default', `Add ${this.data.name} to cart!`);
   }
 
   scrollToTop() {

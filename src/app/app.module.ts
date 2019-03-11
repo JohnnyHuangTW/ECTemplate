@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Modules
 import { ComponentsModule } from './components/components.module';
 import { CategoryModule } from './category/category.module';
+import { NotifierModule } from 'angular-notifier';
 // Services
 import { DataService } from './services/data.service';
 // Components
@@ -35,7 +36,17 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     FormsModule,
     ComponentsModule,
-    CategoryModule
+    CategoryModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right'
+        },
+        vertical: {
+          position: 'top'
+        }
+      }
+    })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

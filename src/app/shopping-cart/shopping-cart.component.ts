@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ShoppingCartItem } from '../interface/ec-template.interface';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   tax = 0;
   total = 0;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private notifierService: NotifierService) {}
 
   ngOnInit() {
     this.data = this.dataService.shoppingCartData;
@@ -31,6 +32,7 @@ export class ShoppingCartComponent implements OnInit {
   removeItem(item: ShoppingCartItem) {
     this.dataService.deleteShoppingCartItem(item);
     this.data = this.dataService.shoppingCartData;
+    this.notifierService.notify('warning', `Remove ${item.product.name}!`);
     this.getOrderSummary();
   }
 
@@ -46,12 +48,12 @@ export class ShoppingCartComponent implements OnInit {
     this.subTotal = 0;
     for (const i of this.data) {
       if (i.product.onSale) {
-        this.subTotal = this.subTotal + (+i.product.salePrice * i.quantity);
+        this.subTotal = this.subTotal + +i.product.salePrice * i.quantity;
       } else {
-        this.subTotal = this.subTotal + (+i.product.costPrice * i.quantity);
+        this.subTotal = this.subTotal + +i.product.costPrice * i.quantity;
       }
     }
-    this.tax = this.subTotal * this.taxPercentage / 100;
+    this.tax = (this.subTotal * this.taxPercentage) / 100;
     this.total = this.subTotal + this.shippingFee + this.tax;
   }
 }
