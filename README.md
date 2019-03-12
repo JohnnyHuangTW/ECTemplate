@@ -1,4 +1,4 @@
-# EcTemplate
+# ECTemplate
 
 An E-commerce website template using Angular 7 and Bootstrap 3
 
