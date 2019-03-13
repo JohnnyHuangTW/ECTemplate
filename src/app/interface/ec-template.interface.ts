@@ -45,3 +45,35 @@ export interface ShoppingCartItem {
   quantity: number;
   option: DropdownItem;
 }
+
+export interface OrderInfo {
+  items?: ShoppingCartItem[];
+  totalPrice?: number;
+  customerInfo?: CustomerInfo;
+  paymentInfo?: PaymentInfo;
+  deliveryInfo?: DeliveryInfo;
+}
+
+export interface CustomerInfo {
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface PaymentInfo {
+  holderName: string;
+  cardNumber: number;
+  expiredDate: string;
+  cvc: number;
+}
+
+export interface DeliveryInfo {
+  recipientName: string;
+  recipientNumber: string;
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  postcode: string;
+  country: string;
+}

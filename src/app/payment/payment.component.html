@@ -1,0 +1,125 @@
+<div class="container">
+    <h1 class="sc-header">Payment</h1>
+    <hr>
+
+    <div class="col-md-12 header-panel">
+        <h3>Order Total:</h3>
+        <h5>( items)</h5>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+        <!-- Customer Info -->
+        <section class="info-card">
+            <div class="section-header">
+                <h3>Customer Info</h3>
+            </div>
+            <div class="section-body">
+                <form>
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Full Name">
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="name">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email Address">
+                    </div>
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" class="form-control" id="phone-number" placeholder="Phone Number">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Payment Detail -->
+        <section class="info-card">
+            <div class="section-header">
+                <h3>Payment Detail</h3>
+            </div>
+            <div class="section-body">
+                <form>
+                    <!-- Card Holder's Name -->
+                    <div class="form-group">
+                        <label for="holder-name">Card Holder's Name</label>
+                        <input type="text" class="form-control" id="holder-name" placeholder="Card Holder's Name">
+                    </div>
+                    <!-- Card Number -->
+                    <div class="form-group credit-card">
+                        <label>Card Number</label>
+                        <input type="text" class="form-control credit-card-number" id="card-number-1">
+                        <input type="text" class="form-control credit-card-number" id="card-number-2">
+                        <input type="text" class="form-control credit-card-number" id="card-number-3">
+                        <input type="text" class="form-control credit-card-number" id="card-number-4">
+                    </div>
+                    <!-- Expired Date -->
+                    <div class="form-group credit-card-detail expired-date">
+                        <label for="expired-date">Expired Date</label>
+                        <input type="text" class="form-control" id="expired-date" placeholder="MM/YY">
+                    </div>
+                    <!-- CVC -->
+                    <div class="form-group credit-card-detail">
+                        <label for="cvc">CVC</label>
+                        <input type="text" class="form-control" id="cvc" placeholder="CVC">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <!-- Delivery Detail -->
+    <div class="col-md-6 col-xs-12">
+        <section class="info-card">
+            <div class="section-header">
+                <h3>Delivery Detail</h3>
+            </div>
+            <div class="section-body">
+                <form>
+                    <!-- Checkbox -->
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Recipient Info is the same as Customer Info
+                        </label>
+                    </div>
+                    <!-- Recipient Name -->
+                    <div class="form-group">
+                        <label for="recipient-name">Recipient Name</label>
+                        <input type="text" class="form-control" id="recipient-name" placeholder="Recipient Name">
+                    </div>
+                    <!-- Recipient Number -->
+                    <div class="form-group">
+                        <label for="recipient-number">Recipient Number</label>
+                        <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number">
+                    </div>
+                    <!-- Address Line 1 -->
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" id="add-line-1" placeholder="Address Line 1">
+                    </div>
+                    <!-- Address Line 2 -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="add-line-2" placeholder="Address Line 2">
+                    </div>
+                    <!-- City -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+                    <!-- State & Postcode -->
+                    <div class="form-group my-inline-form-group">
+                        <input type="text" class="form-control" id="state" placeholder="State">
+                        <input type="text" class="form-control" id="postcode" placeholder="Postcode">
+                    </div>
+                    <!-- Country -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="country" placeholder="Country">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <a class="btn btn-success btn-confirm">Confirm</a>
+    </div>
+
+
+</div>

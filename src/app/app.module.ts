@@ -18,6 +18,7 @@ import { CarouselComponent } from './front-page/carousel/carousel.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EmptyComponent } from './empty/empty.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CarouselComponent,
     ShoppingCartComponent,
     EmptyComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

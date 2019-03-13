@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './category/product-detail/product-detail
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { EmptyComponent } from './empty/empty.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: FrontPageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     ]
   },
   { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'payment', component: PaymentComponent },
   { path: 'empty', component: EmptyComponent },
   { path: '**', component: NotFoundComponent }
 ];
