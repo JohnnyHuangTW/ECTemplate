@@ -1,6 +1,6 @@
 <div class="cate-menu">
     <p class="global-primary dark-primary">Categories</p>
-    <ul id="sidebar">
+    <ul *ngIf="categoryList" id="sidebar">
         <li>
             <a [routerLink]="['./all']" routerLinkActive="active-link">All</a>
             <span class="cate-count">{{dataService.productList$.value.length}}</span>

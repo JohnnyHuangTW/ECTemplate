@@ -18,7 +18,10 @@ export class CategoryListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.currentCategory = params['category'];
-      this.productList = this.dataService.getProductListByCategory(this.currentCategory);
+      this.dataService.setCurrentCategory(this.currentCategory);
+    });
+    this.dataService.currentProductListByCategory$.subscribe((data: ProductInfo[]) => {
+      this.productList = data;
     });
   }
 }

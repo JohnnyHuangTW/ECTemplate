@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { ShoppingCartItem } from '../interface/ec-template.interface';
+import { ShoppingCartItem, OrderInfo } from '../interface/ec-template.interface';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
   removeItem(item: ShoppingCartItem) {
     this.dataService.deleteShoppingCartItem(item);
     this.data = this.dataService.shoppingCartData;
+    this.getOrderSummary();
   }
 
   getTotalPrice(item: ShoppingCartItem) {
@@ -52,5 +53,12 @@ export class ShoppingCartComponent implements OnInit {
     }
     this.tax = (this.subTotal * this.taxPercentage) / 100;
     this.total = this.subTotal + this.shippingFee + this.tax;
+  }
+
+  onCheckOut() {
+    this.dataService.saveOrderInfo(<OrderInfo>{
+      items: this.data,
+      totalPrice: this.total
+    });
   }
 }

@@ -2,5 +2,5 @@
     <li><a [routerLink]="[['./all']]">All Products</a></li>
     <li *ngIf="currentCategory !=='all'">{{currentCategory}}</li>
 </ol>
-<app-product-list [data]="productList"></app-product-list>
+<app-product-list *ngIf="productList" [data]="productList"></app-product-list>
 

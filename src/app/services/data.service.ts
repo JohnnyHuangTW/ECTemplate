@@ -4,39 +4,46 @@ import {
   ProductInfo,
   CategoryInfo,
   ShoppingCartItem,
-  MenuInfo
+  OrderInfo
 } from '../interface/ec-template.interface';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { NotifierService } from 'angular-notifier';
 
 const SHOPPING_CART_KEY = 'shopping-cart-data';
+const ORDER_INFO_KEY = 'order-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  headers = new HttpHeaders();
+  private headers = new HttpHeaders();
   productList$ = new BehaviorSubject<ProductInfo[]>([]);
   categoryList$ = new BehaviorSubject<CategoryInfo[]>([]);
-  menuList$ = new BehaviorSubject<MenuInfo[]>([]);
+  currentCategory$ = new BehaviorSubject<string>('all');
+  currentProductListByCategory$ = new BehaviorSubject<ProductInfo[]>([]);
+
   shoppingCartData: ShoppingCartItem[] = [];
 
   constructor(private http: HttpClient, private notifierService: NotifierService) {
-    forkJoin(this.getAllProductList(), this.getCategoryList(), this.getMenuList()).subscribe(
-      (data: any) => {
-        this.productList$.next(data[0]);
-        console.log('products:', this.productList$.value);
-        this.categoryList$.next(data[1]);
-        console.log('categories:', this.categoryList$.value);
-        this.menuList$.next(data[2]);
-        console.log('menus:', this.menuList$.value);
-        this.setCategoryCount();
-      }
-    );
+    this.initData();
+    this.currentCategory$.subscribe(() => {
+      this.getProductListByCategory();
+    });
   }
 
   setHeaders(key: string, value: string) {
     this.headers.set(key, value);
+  }
+
+  private initData() {
+    forkJoin(this.getAllProductList(), this.getCategoryList()).subscribe((data: any) => {
+      this.productList$.next(data[0]);
+      console.log('products:', this.productList$.value);
+      this.categoryList$.next(data[1]);
+      console.log('categories:', this.categoryList$.value);
+      this.setCategoryCount();
+      this.getProductListByCategory();
+    });
   }
 
   private setLocalStorage(key: string, value: any) {
@@ -54,9 +61,7 @@ export class DataService {
   private getAllProductList() {
     return this.http.get('./assets/data/product-list.json', { headers: this.headers });
   }
-  private getMenuList() {
-    return this.http.get('./assets/data/menu-list.json', { headers: this.headers });
-  }
+
   private getCategoryList() {
     return this.http.get('./assets/data/category-list.json', { headers: this.headers });
   }
@@ -76,13 +81,21 @@ export class DataService {
     }
   }
 
-  getProductListByCategory(category: string) {
-    if (category === 'all') {
-      return this.productList$.value;
+  setCurrentCategory(category: string) {
+    this.currentCategory$.next(category);
+  }
+
+  getMenuList() {
+    return this.http.get('./assets/data/menu-list.json', { headers: this.headers });
+  }
+
+  private getProductListByCategory() {
+    if (this.currentCategory$.value === 'all') {
+      this.currentProductListByCategory$.next(this.productList$.value);
     } else {
       for (const i of this.categoryList$.value) {
-        if (i.name === category) {
-          return i.products;
+        if (i.name === this.currentCategory$.value) {
+          return this.currentProductListByCategory$.next(i.products);
         }
       }
     }
@@ -158,5 +171,13 @@ export class DataService {
       'warning',
       `Remove ${item.product.name} - ${item.option.name.toUpperCase()}`
     );
+  }
+
+  saveOrderInfo(data: OrderInfo) {
+    this.setLocalStorage(ORDER_INFO_KEY, data);
+  }
+
+  getOrderInfo() {
+    return this.getLocalStorage(ORDER_INFO_KEY);
   }
 }

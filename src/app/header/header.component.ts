@@ -13,7 +13,11 @@ export class HeaderComponent implements OnInit {
   constructor(public dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.menuList$.subscribe(data => {
+    this.getMenuList();
+  }
+
+  getMenuList() {
+    this.dataService.getMenuList().subscribe((data: MenuInfo[]) => {
       this.menuList = data;
     });
   }

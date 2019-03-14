@@ -8,11 +8,13 @@ import { CategoryInfo } from 'src/app/interface/ec-template.interface';
   styleUrls: ['./category-sidebar.component.scss']
 })
 export class CategorySidebarComponent implements OnInit {
-  categoryList: CategoryInfo[] = [];
+  categoryList: CategoryInfo[];
 
   constructor(public dataService: DataService) {}
 
   ngOnInit() {
-    this.categoryList = this.dataService.categoryList$.value;
+    this.dataService.categoryList$.subscribe((data: CategoryInfo[]) => {
+      this.categoryList = data;
+    });
   }
 }
