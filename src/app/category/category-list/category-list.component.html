@@ -1,6 +1,6 @@
 <ol class="breadcrumb my-breadcrumb">
     <li><a [routerLink]="[['./all']]">All Products</a></li>
-    <li *ngIf="currentCategory !=='all'">{{currentCategory}}</li>
+    <li *ngIf="dataService.currentCategory$.value !=='all'">{{dataService.currentCategory$ | async}}</li>
 </ol>
 <app-product-list *ngIf="productList" [data]="productList"></app-product-list>
 

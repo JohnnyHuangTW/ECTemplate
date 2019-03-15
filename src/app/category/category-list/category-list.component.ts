@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { ProductInfo } from 'src/app/interface/ec-template.interface';
-import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-category-list',
@@ -10,15 +9,13 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
-  currentCategory = '';
   productList: ProductInfo[] = [];
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) {}
+  constructor(private route: ActivatedRoute, public dataService: DataService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.currentCategory = params['category'];
-      this.dataService.setCurrentCategory(this.currentCategory);
+      this.dataService.setCurrentCategory(params['category']);
     });
     this.dataService.currentProductListByCategory$.subscribe((data: ProductInfo[]) => {
       this.productList = data;

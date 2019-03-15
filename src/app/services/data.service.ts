@@ -27,7 +27,9 @@ export class DataService {
   constructor(private http: HttpClient, private notifierService: NotifierService) {
     this.initData();
     this.currentCategory$.subscribe(() => {
-      this.getProductListByCategory();
+      if (this.categoryList$.value.length !== 0) {
+        this.getProductListByCategory();
+      }
     });
   }
 
@@ -93,11 +95,11 @@ export class DataService {
     if (this.currentCategory$.value === 'all') {
       this.currentProductListByCategory$.next(this.productList$.value);
     } else {
-      for (const i of this.categoryList$.value) {
-        if (i.name === this.currentCategory$.value) {
-          return this.currentProductListByCategory$.next(i.products);
-        }
-      }
+      this.currentProductListByCategory$.next(
+        this.categoryList$.value.find(data => {
+          return data.name === this.currentCategory$.value;
+        }).products
+      );
     }
   }
 
