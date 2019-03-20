@@ -9,24 +9,32 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { QuantityInputComponent } from './components/quantity-input/quantity-input.component';
 import { FieldErrorDisplayComponent } from './components/field-error-display/field-error-display.component';
+// Directives
+import { DigitOnlyDirective } from './directives/digit-only.directive';
 
 @NgModule({
   declarations: [
+    // Components
     FakeImageComponent,
     ProductThumbnailComponent,
     ProductListComponent,
     DropdownComponent,
     QuantityInputComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    // Directives
+    DigitOnlyDirective
   ],
   imports: [BrowserModule, PaginationModule.forRoot(), LazyLoadImageModule],
   exports: [
+    // Components
     FakeImageComponent,
     ProductThumbnailComponent,
     ProductListComponent,
     DropdownComponent,
     QuantityInputComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    // Directives
+    DigitOnlyDirective
   ]
 })
 export class SharedModule {}
