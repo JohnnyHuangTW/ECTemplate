@@ -1,125 +1,228 @@
 <div class="container">
-    <h1 class="sc-header">Payment</h1>
-    <hr>
+    <div [formGroup]="form" novalidate>
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">Payment</h1>
+            <div class="summary">
+                <h3>Order Total: ${{data.totalPrice}}</h3>
+                <h5>( {{data.items.length}} items )</h5>
+            </div>
+        </div>
 
-    <div class="col-md-12 header-panel">
-        <h3>Order Total:</h3>
-        <h5>( items)</h5>
+        <hr>
+
+        <div class="col-md-6 col-xs-12">
+            <!-- Customer Info -->
+            <section class="info-card">
+                <div class="section-header">
+                    <h3>Customer Info</h3>
+                </div>
+                <div class="section-body">
+                    <form class="form-horizontal" formGroupName="customerInfo">
+                        <!-- Name -->
+                        <div class="form-group" [ngClass]="displayFieldCss('customerInfo.name')">
+                            <div class="col-xs-12">
+                                <label for="name" class="required-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Full Name" formControlName="name">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('customerInfo.name')"
+                                    errorMsg="Please inform your name">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group" [ngClass]="displayFieldCss('customerInfo.email')">
+                            <div class="col-xs-12">
+                                <label for="email" class="required-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('customerInfo.email')"
+                                    errorMsg="Please inform your Email">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Phone Number -->
+                        <div class="form-group" [ngClass]="displayFieldCss('customerInfo.phoneNumber')">
+                            <div class="col-xs-12">
+                                <label for="phone-number" class="required-label">Phone Number</label>
+                                <input type="text" class="form-control" id="phone-number" placeholder="Phone Number" formControlName="phoneNumber">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('customerInfo.phoneNumber')"
+                                    errorMsg="Please inform your Phone Number">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Payment Detail -->
+            <section class="info-card">
+                <div class="section-header">
+                    <h3>Payment Detail</h3>
+                </div>
+                <div class="section-body">
+                    <form class="form-horizontal" formGroupName="paymentInfo">
+                        <!-- Card Holder's Name -->
+                        <div class="form-group" [ngClass]="displayFieldCss('paymentInfo.holderName')">
+                            <div class="col-xs-12">
+                                <label for="holder-name" class="required-label">Card Holder's Name</label>
+                                <input type="text" class="form-control" id="holder-name" placeholder="Card Holder's Name" formControlName="holderName">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('paymentInfo.holderName')"
+                                    errorMsg="Please inform your Holder Name">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Card Number -->
+                        <div class="form-group" [ngClass]="displayFieldCss('paymentInfo.cardNumber')">
+                            <div class="col-xs-12">
+                                <label for="card-number" class="required-label">Card Number</label>
+                                <input type="text" class="form-control" id="card-number" placeholder="0000-0000-0000-0000" formControlName="cardNumber">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('paymentInfo.cardNumber')"
+                                    errorMsg="Please inform your Holder Name">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Expired Date & CVC -->
+                        <div class="form-group">
+                            <div class="col-xs-6" [ngClass]="displayFieldCss('paymentInfo.expiredDate')">
+                                <label for="expired-date" class="required-label">Expired Date</label>
+                                <input type="text" class="form-control" id="expired-date" placeholder="MM/YY" formControlName="expiredDate">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('paymentInfo.expiredDate')"
+                                    errorMsg="Please inform Card Expired Date">
+                                </app-field-error-display>
+                            </div>
+                            <!-- CVC -->
+                            <div class="col-xs-6" [ngClass]="displayFieldCss('paymentInfo.cvc')">
+                                <label for="cvc" class="required-label">CVC</label>
+                                <input type="text" class="form-control" id="cvc" placeholder="CVC" formControlName="cvc">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('paymentInfo.cvc')"
+                                    errorMsg="Please inform Card CVC">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <!-- Delivery Detail -->
+        <div class="col-md-6 col-xs-12">
+            <section class="info-card">
+                <div class="section-header">
+                    <h3>Delivery Detail</h3>
+                </div>
+                <div class="section-body">
+                    <form class="form-horizontal" formGroupName="deliveryInfo">
+                        <!-- Checkbox -->
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Recipient Info is the same as Customer Info
+                            </label>
+                        </div>
+                        <!-- Recipient Name -->
+                        <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.recipientName')">
+                            <div class="col-xs-12">
+                                <label for="recipient-name" class="required-label">Recipient Name</label>
+                                <input type="text" class="form-control" id="recipient-name" placeholder="Recipient Name" formControlName="recipientName">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.recipientName')"
+                                    errorMsg="Please inform Recipient Name">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Recipient Number -->
+                        <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.recipientNumber')">
+                            <div class="col-xs-12">
+                                <label for="recipient-number" class="required-label">Recipient Number</label>
+                                <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number" formControlName="recipientNumber">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.recipientNumber')"
+                                    errorMsg="Please inform Recipient Phone Number">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- Address -->
+                        <!-- Address Line 1 -->
+                        <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.addressLine1')">
+                            <div class="col-xs-12">
+                                <label for="add-line-1" class="required-label">Address</label>
+                                <input type="text" class="form-control" id="add-line-1" placeholder="Address Line 1" formControlName="addressLine1">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.addressLine1')"
+                                    errorMsg="Please inform your Address">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Address Line 2 -->
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control" id="add-line-2" placeholder="Address Line 2"  formControlName="addressLine2">
+                            </div>
+                        </div>
+                        <!-- City -->
+                        <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.city')">
+                            <div class="col-xs-12">
+                                <label for="city" class="required-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.city')"
+                                    errorMsg="Please inform your City">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- State & Postcode -->
+                        <div class="form-group">
+                            <!-- State -->
+                            <div class="col-xs-6" [ngClass]="displayFieldCss('deliveryInfo.state')">
+                                <label for="state" class="required-label">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="State" formControlName="state">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.state')"
+                                    errorMsg="Please inform your State">
+                                </app-field-error-display>
+                            </div>
+                            <!-- Postcode -->
+                            <div class="col-xs-6" [ngClass]="displayFieldCss('deliveryInfo.postcode')">
+                                <label for="postcode" class="required-label">Postcode</label>
+                                <input type="text" class="form-control" id="postcode" placeholder="Postcode" formControlName="postcode">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.postcode')"
+                                    errorMsg="Please inform your Postcode">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                        <!-- Country -->
+                        <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.country')">
+                            <div class="col-xs-12">
+                                <label for="country" class="required-label">Country</label>
+                                <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country">
+                                <app-field-error-display
+                                    [displayError]="isFieldValid('deliveryInfo.country')"
+                                    errorMsg="Please inform your Country">
+                                </app-field-error-display>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Submit button -->
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 submit-block">
+                    <a class="btn btn-success btn-confirm" (click)="onSubmit()">
+                        Submit
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="col-md-6 col-xs-12">
-        <!-- Customer Info -->
-        <section class="info-card">
-            <div class="section-header">
-                <h3>Customer Info</h3>
-            </div>
-            <div class="section-body">
-                <form>
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Full Name">
-                    </div>
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="name">Email Address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email Address">
-                    </div>
-                    <!-- Phone Number -->
-                    <div class="form-group">
-                        <label for="phone-number">Phone Number</label>
-                        <input type="text" class="form-control" id="phone-number" placeholder="Phone Number">
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- Payment Detail -->
-        <section class="info-card">
-            <div class="section-header">
-                <h3>Payment Detail</h3>
-            </div>
-            <div class="section-body">
-                <form>
-                    <!-- Card Holder's Name -->
-                    <div class="form-group">
-                        <label for="holder-name">Card Holder's Name</label>
-                        <input type="text" class="form-control" id="holder-name" placeholder="Card Holder's Name">
-                    </div>
-                    <!-- Card Number -->
-                    <div class="form-group credit-card">
-                        <label>Card Number</label>
-                        <input type="text" class="form-control credit-card-number" id="card-number-1">
-                        <input type="text" class="form-control credit-card-number" id="card-number-2">
-                        <input type="text" class="form-control credit-card-number" id="card-number-3">
-                        <input type="text" class="form-control credit-card-number" id="card-number-4">
-                    </div>
-                    <!-- Expired Date -->
-                    <div class="form-group credit-card-detail expired-date">
-                        <label for="expired-date">Expired Date</label>
-                        <input type="text" class="form-control" id="expired-date" placeholder="MM/YY">
-                    </div>
-                    <!-- CVC -->
-                    <div class="form-group credit-card-detail">
-                        <label for="cvc">CVC</label>
-                        <input type="text" class="form-control" id="cvc" placeholder="CVC">
-                    </div>
-                </form>
-            </div>
-        </section>
-    </div>
-    <!-- Delivery Detail -->
-    <div class="col-md-6 col-xs-12">
-        <section class="info-card">
-            <div class="section-header">
-                <h3>Delivery Detail</h3>
-            </div>
-            <div class="section-body">
-                <form>
-                    <!-- Checkbox -->
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Recipient Info is the same as Customer Info
-                        </label>
-                    </div>
-                    <!-- Recipient Name -->
-                    <div class="form-group">
-                        <label for="recipient-name">Recipient Name</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Recipient Name">
-                    </div>
-                    <!-- Recipient Number -->
-                    <div class="form-group">
-                        <label for="recipient-number">Recipient Number</label>
-                        <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number">
-                    </div>
-                    <!-- Address Line 1 -->
-                    <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" id="add-line-1" placeholder="Address Line 1">
-                    </div>
-                    <!-- Address Line 2 -->
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="add-line-2" placeholder="Address Line 2">
-                    </div>
-                    <!-- City -->
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="city" placeholder="City">
-                    </div>
-                    <!-- State & Postcode -->
-                    <div class="form-group my-inline-form-group">
-                        <input type="text" class="form-control" id="state" placeholder="State">
-                        <input type="text" class="form-control" id="postcode" placeholder="Postcode">
-                    </div>
-                    <!-- Country -->
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="country" placeholder="Country">
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <a class="btn btn-success btn-confirm">Confirm</a>
-    </div>
-
 
 </div>

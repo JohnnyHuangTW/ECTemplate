@@ -1,6 +1,12 @@
-.sc-header {
+.header {
+  padding-right: 15px;
+}
+
+.title {
+  display: inline-block;
   text-transform: uppercase;
   padding: 10px 25px;
+  margin-top: 0px;
   margin-bottom: 0px;
   letter-spacing: 2px;
   font-size: 18px;
@@ -13,6 +19,21 @@ hr {
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eee;
+}
+
+.summary {
+  float: right;
+
+  h3 {
+    margin: 5px 0;
+    font-size: 15px;
+    text-align: right;
+    letter-spacing: 0px;
+  }
+
+  h5 {
+    text-align: right;
+  }
 }
 
 .header-panel {
@@ -60,7 +81,7 @@ hr {
   padding: 15px 0 0 0;
 
   div {
-    margin-bottom: 10px;
+    position: relative;
   }
 
   hr {
@@ -71,40 +92,19 @@ hr {
     border-top: 1px solid #eee;
   }
 
-
-
 }
 
-.my-inline-form-group input {
-  display: inline-block;
-  width: calc(50% - 2px);
+.required-label:after {
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+  top: 0px;
 }
 
-.my-inline-form-group input:first-child {
-  margin-right: 4px;
-}
-
-.credit-card label {
-  display: block;
-}
-
-.credit-card-number {
-  display: inline-block;
-  margin-right: 13px;
-  width: calc(25% - 10px);
-}
-
-.credit-card-number:last-child {
-  margin-right: 0px;
-}
-
-.credit-card-detail {
-  display: inline-block;
-  width: calc(50% - 6px);
-}
-
-.expired-date {
-  margin-right: 12px;
+.submit-block {
+  margin: 0px auto;
+  float: none;
 }
 
 .btn-confirm {
