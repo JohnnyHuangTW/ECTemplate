@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import {
-  OrderInfo,
-  CustomerInfo,
-  DeliveryInfo,
-  PaymentInfo
-} from '../interface/ec-template.interface';
+import { OrderInfo } from '../interface/ec-template.interface';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -15,8 +10,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class PaymentComponent implements OnInit {
   data: OrderInfo;
-  submitted = false;
-  // forms
   form: FormGroup;
 
   constructor(private dataService: DataService, private fb: FormBuilder) {}
@@ -32,9 +25,9 @@ export class PaymentComponent implements OnInit {
       }),
       paymentInfo: this.fb.group({
         holderName: ['', Validators.required],
-        cardNumber: ['', Validators.required],
+        cardNumber: ['', [Validators.required, Validators.minLength(12)]],
         expiredDate: ['', Validators.required],
-        cvc: ['', Validators.required]
+        cvc: ['', [Validators.required, Validators.minLength(3)]]
       }),
       deliveryInfo: this.fb.group({
         recipientName: ['', Validators.required],
@@ -47,24 +40,26 @@ export class PaymentComponent implements OnInit {
         country: ['', Validators.required]
       })
     });
-    console.log('form', this.form);
-  }
-  // convenience getter for easy access to form fields
-  get formControls() {
-    return this.form.controls;
   }
 
   onSubmit() {
     if (this.form.valid) {
       console.log('submit form');
     } else {
-      console.log('invalid');
       this.validateAllFormFields(this.form);
     }
   }
 
   isFieldValid(field: string) {
     return !this.form.get(field).valid && this.form.get(field).touched;
+  }
+
+  isRequiredValid(field: string) {
+    return this.form.get(field).hasError('required') && this.form.get(field).touched;
+  }
+
+  isMinLengthValid(field: string) {
+    return this.form.get(field).hasError('minlength') && this.form.get(field).touched;
   }
 
   displayFieldCss(field: string) {
@@ -84,5 +79,26 @@ export class PaymentComponent implements OnInit {
         this.validateAllFormFields(control);
       }
     });
+  }
+
+  // Set delivery info if check box is checked
+  toggleDeliveryCB(isChecked: boolean) {
+    const recipientName = this.form.get('deliveryInfo.recipientName');
+    const recipientNumber = this.form.get('deliveryInfo.recipientNumber');
+    if (isChecked) {
+      recipientName.setValue(this.form.get('customerInfo.name').value);
+      recipientNumber.setValue(this.form.get('customerInfo.phoneNumber').value);
+    } else {
+      recipientName.reset();
+      recipientNumber.reset();
+    }
+  }
+
+  limitedInputLength(field: string, limit: number) {
+    const formControl = this.form.get(field);
+
+    if (formControl.value.length > limit) {
+      formControl.setValue(formControl.value.slice(0, limit));
+    }
   }
 }

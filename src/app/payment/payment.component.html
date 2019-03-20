@@ -25,7 +25,7 @@
                                 <label for="name" class="required-label">Full Name</label>
                                 <input type="text" class="form-control" id="name" placeholder="Full Name" formControlName="name">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('customerInfo.name')"
+                                    [displayError]="isRequiredValid('customerInfo.name')"
                                     errorMsg="Please inform your name">
                                 </app-field-error-display>
                             </div>
@@ -36,7 +36,7 @@
                                 <label for="email" class="required-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('customerInfo.email')"
+                                    [displayError]="isRequiredValid('customerInfo.email')"
                                     errorMsg="Please inform your Email">
                                 </app-field-error-display>
                             </div>
@@ -47,7 +47,7 @@
                                 <label for="phone-number" class="required-label">Phone Number</label>
                                 <input type="text" class="form-control" id="phone-number" placeholder="Phone Number" formControlName="phoneNumber">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('customerInfo.phoneNumber')"
+                                    [displayError]="isRequiredValid('customerInfo.phoneNumber')"
                                     errorMsg="Please inform your Phone Number">
                                 </app-field-error-display>
                             </div>
@@ -69,7 +69,7 @@
                                 <label for="holder-name" class="required-label">Card Holder's Name</label>
                                 <input type="text" class="form-control" id="holder-name" placeholder="Card Holder's Name" formControlName="holderName">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('paymentInfo.holderName')"
+                                    [displayError]="isRequiredValid('paymentInfo.holderName')"
                                     errorMsg="Please inform your Holder Name">
                                 </app-field-error-display>
                             </div>
@@ -78,10 +78,15 @@
                         <div class="form-group" [ngClass]="displayFieldCss('paymentInfo.cardNumber')">
                             <div class="col-xs-12">
                                 <label for="card-number" class="required-label">Card Number</label>
-                                <input type="text" class="form-control" id="card-number" placeholder="0000-0000-0000-0000" formControlName="cardNumber">
+                                <input type="text" class="form-control" id="card-number" placeholder="Debit/Credit Card Number" formControlName="cardNumber"
+                                (input)="limitedInputLength( 'paymentInfo.cardNumber', 12)">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('paymentInfo.cardNumber')"
-                                    errorMsg="Please inform your Holder Name">
+                                    [displayError]="isRequiredValid('paymentInfo.cardNumber')"
+                                    errorMsg="Please inform your Card Number">
+                                </app-field-error-display>
+                                <app-field-error-display
+                                    [displayError]="isMinLengthValid('paymentInfo.cardNumber')"
+                                    errorMsg="Card Number must be 12 digit codes">
                                 </app-field-error-display>
                             </div>
                         </div>
@@ -91,17 +96,22 @@
                                 <label for="expired-date" class="required-label">Expired Date</label>
                                 <input type="text" class="form-control" id="expired-date" placeholder="MM/YY" formControlName="expiredDate">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('paymentInfo.expiredDate')"
+                                    [displayError]="isRequiredValid('paymentInfo.expiredDate')"
                                     errorMsg="Please inform Card Expired Date">
                                 </app-field-error-display>
                             </div>
                             <!-- CVC -->
                             <div class="col-xs-6" [ngClass]="displayFieldCss('paymentInfo.cvc')">
                                 <label for="cvc" class="required-label">CVC</label>
-                                <input type="text" class="form-control" id="cvc" placeholder="CVC" formControlName="cvc">
+                                <input type="text" class="form-control" id="cvc" placeholder="CVC" formControlName="cvc"
+                                (input)="limitedInputLength('paymentInfo.cvc', 3)">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('paymentInfo.cvc')"
+                                    [displayError]="isRequiredValid('paymentInfo.cvc')"
                                     errorMsg="Please inform Card CVC">
+                                </app-field-error-display>
+                                <app-field-error-display
+                                    [displayError]="isMinLengthValid('paymentInfo.cvc')"
+                                    errorMsg="CVC must be 3 characters">
                                 </app-field-error-display>
                             </div>
                         </div>
@@ -118,10 +128,12 @@
                 <div class="section-body">
                     <form class="form-horizontal" formGroupName="deliveryInfo">
                         <!-- Checkbox -->
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Recipient Info is the same as Customer Info
-                            </label>
+                        <div class="form-group">
+                            <div class="col-xs-12 checkbox">
+                                <label>
+                                    <input #delivery_cb type="checkbox" (change)="toggleDeliveryCB(delivery_cb.checked)"> Recipient Info is the same as Customer Info
+                                </label>
+                            </div>
                         </div>
                         <!-- Recipient Name -->
                         <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.recipientName')">
@@ -129,7 +141,7 @@
                                 <label for="recipient-name" class="required-label">Recipient Name</label>
                                 <input type="text" class="form-control" id="recipient-name" placeholder="Recipient Name" formControlName="recipientName">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.recipientName')"
+                                    [displayError]="isRequiredValid('deliveryInfo.recipientName')"
                                     errorMsg="Please inform Recipient Name">
                                 </app-field-error-display>
                             </div>
@@ -140,7 +152,7 @@
                                 <label for="recipient-number" class="required-label">Recipient Number</label>
                                 <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number" formControlName="recipientNumber">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.recipientNumber')"
+                                    [displayError]="isRequiredValid('deliveryInfo.recipientNumber')"
                                     errorMsg="Please inform Recipient Phone Number">
                                 </app-field-error-display>
                             </div>
@@ -154,7 +166,7 @@
                                 <label for="add-line-1" class="required-label">Address</label>
                                 <input type="text" class="form-control" id="add-line-1" placeholder="Address Line 1" formControlName="addressLine1">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.addressLine1')"
+                                    [displayError]="isRequiredValid('deliveryInfo.addressLine1')"
                                     errorMsg="Please inform your Address">
                                 </app-field-error-display>
                             </div>
@@ -171,7 +183,7 @@
                                 <label for="city" class="required-label">City</label>
                                 <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.city')"
+                                    [displayError]="isRequiredValid('deliveryInfo.city')"
                                     errorMsg="Please inform your City">
                                 </app-field-error-display>
                             </div>
@@ -183,7 +195,7 @@
                                 <label for="state" class="required-label">State</label>
                                 <input type="text" class="form-control" id="state" placeholder="State" formControlName="state">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.state')"
+                                    [displayError]="isRequiredValid('deliveryInfo.state')"
                                     errorMsg="Please inform your State">
                                 </app-field-error-display>
                             </div>
@@ -192,7 +204,7 @@
                                 <label for="postcode" class="required-label">Postcode</label>
                                 <input type="text" class="form-control" id="postcode" placeholder="Postcode" formControlName="postcode">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.postcode')"
+                                    [displayError]="isRequiredValid('deliveryInfo.postcode')"
                                     errorMsg="Please inform your Postcode">
                                 </app-field-error-display>
                             </div>
@@ -203,7 +215,7 @@
                                 <label for="country" class="required-label">Country</label>
                                 <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country">
                                 <app-field-error-display
-                                    [displayError]="isFieldValid('deliveryInfo.country')"
+                                    [displayError]="isRequiredValid('deliveryInfo.country')"
                                     errorMsg="Please inform your Country">
                                 </app-field-error-display>
                             </div>

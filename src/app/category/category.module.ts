@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from '../components/components.module';
+import { SharedModule } from '../shared/shared.module';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { CategoryComponent } from './category.component';
 import { CategorySidebarComponent } from './category-sidebar/category-sidebar.component';
@@ -15,7 +15,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     CategoryListComponent,
     ProductDetailComponent
   ],
-  imports: [BrowserModule, RouterModule, ComponentsModule, NgxGalleryModule],
+  imports: [BrowserModule, RouterModule, SharedModule, NgxGalleryModule],
   exports: [
     CategoryComponent,
     CategorySidebarComponent,
