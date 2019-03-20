@@ -44,7 +44,7 @@ export class PaymentComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('submit form');
+      this.dataService.submitPayment(this.form.value);
     } else {
       this.validateAllFormFields(this.form);
     }
@@ -94,11 +94,27 @@ export class PaymentComponent implements OnInit {
     }
   }
 
+  // Control input's limit characters
   limitedInputLength(field: string, limit: number) {
     const formControl = this.form.get(field);
-
     if (formControl.value.length > limit) {
       formControl.setValue(formControl.value.slice(0, limit));
+    }
+  }
+
+  checkExpiredDatePattern(inputEvent: any) {
+    console.log(inputEvent.inputType);
+    const formControl = this.form.get('paymentInfo.expiredDate');
+    if (inputEvent.inputType === 'insertText') {
+      if (formControl.value.length > 5) {
+        // can't be more than 5 characters
+        formControl.setValue(formControl.value.slice(0, 5));
+      } else if (formControl.value.length === 3) {
+        // add '/' after the second number
+        const front = formControl.value.slice(0, 2);
+        const back = formControl.value.slice(2, 4);
+        formControl.setValue(`${front}/${back}`);
+      }
     }
   }
 }

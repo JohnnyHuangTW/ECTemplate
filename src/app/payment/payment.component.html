@@ -45,7 +45,7 @@
                         <div class="form-group" [ngClass]="displayFieldCss('customerInfo.phoneNumber')">
                             <div class="col-xs-12">
                                 <label for="phone-number" class="required-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone-number" placeholder="Phone Number" formControlName="phoneNumber">
+                                <input type="text" class="form-control" id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('customerInfo.phoneNumber')"
                                     errorMsg="Please inform your Phone Number">
@@ -79,7 +79,7 @@
                             <div class="col-xs-12">
                                 <label for="card-number" class="required-label">Card Number</label>
                                 <input type="text" class="form-control" id="card-number" placeholder="Debit/Credit Card Number" formControlName="cardNumber"
-                                (input)="limitedInputLength( 'paymentInfo.cardNumber', 12)">
+                                (input)="limitedInputLength( 'paymentInfo.cardNumber', 12)" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('paymentInfo.cardNumber')"
                                     errorMsg="Please inform your Card Number">
@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <div class="col-xs-6" [ngClass]="displayFieldCss('paymentInfo.expiredDate')">
                                 <label for="expired-date" class="required-label">Expired Date</label>
-                                <input type="text" class="form-control" id="expired-date" placeholder="MM/YY" formControlName="expiredDate">
+                                <input type="text" class="form-control" id="expired-date" placeholder="MM/YY" formControlName="expiredDate" (input)="checkExpiredDatePattern($event)" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('paymentInfo.expiredDate')"
                                     errorMsg="Please inform Card Expired Date">
@@ -104,14 +104,14 @@
                             <div class="col-xs-6" [ngClass]="displayFieldCss('paymentInfo.cvc')">
                                 <label for="cvc" class="required-label">CVC</label>
                                 <input type="text" class="form-control" id="cvc" placeholder="CVC" formControlName="cvc"
-                                (input)="limitedInputLength('paymentInfo.cvc', 3)">
+                                (input)="limitedInputLength('paymentInfo.cvc', 3)" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('paymentInfo.cvc')"
                                     errorMsg="Please inform Card CVC">
                                 </app-field-error-display>
                                 <app-field-error-display
                                     [displayError]="isMinLengthValid('paymentInfo.cvc')"
-                                    errorMsg="CVC must be 3 characters">
+                                    errorMsg="CVC must be 3 digit codes">
                                 </app-field-error-display>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                         <div class="form-group" [ngClass]="displayFieldCss('deliveryInfo.recipientNumber')">
                             <div class="col-xs-12">
                                 <label for="recipient-number" class="required-label">Recipient Number</label>
-                                <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number" formControlName="recipientNumber">
+                                <input type="text" class="form-control" id="recipient-number" placeholder="Recipient Number" formControlName="recipientNumber" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('deliveryInfo.recipientNumber')"
                                     errorMsg="Please inform Recipient Phone Number">
@@ -202,7 +202,7 @@
                             <!-- Postcode -->
                             <div class="col-xs-6" [ngClass]="displayFieldCss('deliveryInfo.postcode')">
                                 <label for="postcode" class="required-label">Postcode</label>
-                                <input type="text" class="form-control" id="postcode" placeholder="Postcode" formControlName="postcode">
+                                <input type="text" class="form-control" id="postcode" placeholder="Postcode" formControlName="postcode" appDigitOnly>
                                 <app-field-error-display
                                     [displayError]="isRequiredValid('deliveryInfo.postcode')"
                                     errorMsg="Please inform your Postcode">

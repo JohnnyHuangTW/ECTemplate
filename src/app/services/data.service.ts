@@ -182,4 +182,9 @@ export class DataService {
   getOrderInfo() {
     return this.getLocalStorage(ORDER_INFO_KEY);
   }
+
+  submitPayment(payment: any) {
+    console.log(payment);
+    this.notifierService.notify('default', 'Submit Success!!');
+  }
 }
