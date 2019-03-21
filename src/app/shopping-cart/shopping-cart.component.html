@@ -30,7 +30,8 @@
                         <p>${{getTotalPrice(item)}}</p>
                     </div>
                     <div class="cart-section remove-wrap">
-                        <a class="remove-button" (click)="removeItem(item)">x</a>
+                        <!-- <a class="remove-button" (click)="removeItem(item)">x</a> -->
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true" (click)="removeItem(item)" tooltip="Remove">&times;</span></button>
                     </div>
                 </div>
             </li>
@@ -40,7 +41,7 @@
             Continue Shopping <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
         </a>
     </div>
-
+    <!-- Order Summary -->
     <div *ngIf="data.length !== 0" class="col-md-4 col-xs-12">
         <section class="order-summary">
             <div class="section-header">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { OrderInfo } from '../interface/ec-template.interface';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -12,10 +13,16 @@ export class PaymentComponent implements OnInit {
   data: OrderInfo;
   form: FormGroup;
 
-  constructor(private dataService: DataService, private fb: FormBuilder) {}
+  constructor(private dataService: DataService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
+    this.scrollToTop();
+
     this.data = this.dataService.getOrderInfo();
+    // redirect to shopping cart page if no item in the cart
+    if (this.data.items.length === 0) {
+      this.router.navigate(['shopping-cart']);
+    }
 
     this.form = this.fb.group({
       customerInfo: this.fb.group({
@@ -44,7 +51,10 @@ export class PaymentComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.dataService.submitPayment(this.form.value);
+      this.data.customerInfo = this.form.get('customerInfo').value;
+      this.data.deliveryInfo = this.form.get('deliveryInfo').value;
+      this.data.paymentInfo = this.form.get('paymentInfo').value;
+      this.dataService.submitOrder(this.data);
     } else {
       this.validateAllFormFields(this.form);
     }
@@ -103,7 +113,6 @@ export class PaymentComponent implements OnInit {
   }
 
   checkExpiredDatePattern(inputEvent: any) {
-    console.log(inputEvent.inputType);
     const formControl = this.form.get('paymentInfo.expiredDate');
     if (inputEvent.inputType === 'insertText') {
       if (formControl.value.length > 5) {
@@ -116,5 +125,16 @@ export class PaymentComponent implements OnInit {
         formControl.setValue(`${front}/${back}`);
       }
     }
+  }
+
+  scrollToTop() {
+    const scrollToTop = window.setInterval(() => {
+      const pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 6);
   }
 }

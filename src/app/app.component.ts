@@ -9,7 +9,5 @@ import { DataService } from './services/data.service';
 export class AppComponent implements OnInit {
   constructor(public dataService: DataService) {}
 
-  ngOnInit() {
-    this.dataService.loadShoppingCart();
-  }
+  ngOnInit() {}
 }

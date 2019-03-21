@@ -8,6 +8,7 @@ import {
 } from '../interface/ec-template.interface';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 const SHOPPING_CART_KEY = 'shopping-cart-data';
 const ORDER_INFO_KEY = 'order-info';
@@ -24,7 +25,11 @@ export class DataService {
 
   shoppingCartData: ShoppingCartItem[] = [];
 
-  constructor(private http: HttpClient, private notifierService: NotifierService) {
+  constructor(
+    private http: HttpClient,
+    private notifierService: NotifierService,
+    private router: Router
+  ) {
     this.initData();
     this.currentCategory$.subscribe(() => {
       if (this.categoryList$.value.length !== 0) {
@@ -38,6 +43,7 @@ export class DataService {
   }
 
   private initData() {
+    this.loadShoppingCart();
     forkJoin(this.getAllProductList(), this.getCategoryList()).subscribe((data: any) => {
       this.productList$.next(data[0]);
       console.log('products:', this.productList$.value);
@@ -123,7 +129,7 @@ export class DataService {
     return relatedProducts;
   }
 
-  loadShoppingCart() {
+  private loadShoppingCart() {
     if (this.getLocalStorage(SHOPPING_CART_KEY)) {
       this.shoppingCartData = this.getLocalStorage(SHOPPING_CART_KEY);
     }
@@ -183,8 +189,15 @@ export class DataService {
     return this.getLocalStorage(ORDER_INFO_KEY);
   }
 
-  submitPayment(payment: any) {
-    console.log(payment);
-    this.notifierService.notify('default', 'Submit Success!!');
+  submitOrder(order: OrderInfo) {
+    console.log('Order Info:', order);
+    this.notifierService.notify('default', 'Submit Success');
+    // Delete shopping cart items and order from local storage then redirect to shopping Cart
+    this.removeLocalStorage(SHOPPING_CART_KEY);
+    this.removeLocalStorage(ORDER_INFO_KEY);
+    this.shoppingCartData = [];
+    setTimeout(() => {
+      this.router.navigate(['shopping-cart']);
+    }, 2000);
   }
 }

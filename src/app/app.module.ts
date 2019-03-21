@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 // Modules
 import { SharedModule } from './shared/shared.module';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { CategoryModule } from './category/category.module';
 import { NotifierModule } from 'angular-notifier';
 // Services
@@ -39,6 +40,7 @@ import { PaymentComponent } from './payment/payment.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    TooltipModule.forRoot(),
     CategoryModule,
     NotifierModule.withConfig({
       position: {
