@@ -335,6 +335,14 @@ MIT
 
 ngx-bootstrap/pagination
 
+ngx-bootstrap/utils
+
+ngx-bootstrap/component-loader
+
+ngx-bootstrap/positioning
+
+ngx-bootstrap/tooltip
+
 @angular/core
 MIT
 
