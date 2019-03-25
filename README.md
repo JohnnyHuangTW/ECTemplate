@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-[ECTemplate](https://zhongherobertdowneyjr.github.io/ECTemplate/)
+[ECTemplate](https://johnnyhuangtw.github.io/ECTemplate/)
 
 ## Development server
 
