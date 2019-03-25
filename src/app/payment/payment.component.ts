@@ -17,7 +17,6 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.scrollToTop();
-
     this.data = this.dataService.getOrderInfo();
     // redirect to shopping cart page if no item in the cart
     if (this.data.items.length === 0) {
@@ -57,6 +56,7 @@ export class PaymentComponent implements OnInit {
       this.dataService.submitOrder(this.data);
     } else {
       this.validateAllFormFields(this.form);
+      this.scrollToTop();
     }
   }
 
@@ -125,6 +125,14 @@ export class PaymentComponent implements OnInit {
         formControl.setValue(`${front}/${back}`);
       }
     }
+  }
+
+  getTotalItems() {
+    let total = 0;
+    for (const i of this.data.items) {
+      total += +i.quantity;
+    }
+    return total;
   }
 
   scrollToTop() {
